@@ -1,0 +1,273 @@
+baseurl: https://cold-rivers-snow.github.io/hjxblog/
+languageCode: zh-cn
+theme: stack
+title: 寒江雪的博客
+copyright: 山重水复疑无路，柳暗花明又一村
+
+# Theme i18n support
+# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
+DefaultContentLanguage: zh-cn
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: true
+
+languages:
+    zh-cn:
+        languageName: 中文
+        title: 寒江雪的博客
+        weight: 1
+        params:
+            sidebar:
+                subtitle: 山重水复疑无路，柳暗花明又一村
+
+services:
+    # Change it to your Disqus shortname before using
+    disqus:
+        shortname: "stack"
+    # GA Tracking ID
+    googleAnalytics:
+        id:
+
+pagination:
+    pagerSize: 3
+
+permalinks:
+    post: /p/:slug/
+    page: /:slug/
+
+params:
+    description: "专注记录成长、生活、积累。"  # 站点描述
+    mainSections:  # 置于此/这些章节下的页面将显示在主页和归档页面上
+        - post
+    featuredImageField: image  # 用于获取页面特色图片的前置内容字段 
+    rssFullContent: true  # 以RSS格式输出页面的完整内容
+    favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)  # 站点图标
+
+    footer:
+        since: 2025
+        customText: 山重水复疑无路，柳暗花明又一村
+
+    dateFormat:
+        published: 2006-01-02
+        lastUpdated: 2006-01-02 15:04:05 MST
+
+    sidebar:
+        compact: false # 侧边栏紧凑
+        emoji: ⚽
+        subtitle: 欢迎来到我的博客网站.
+        avatar:
+            enabled: true
+            local: true
+            src: img/avatar.png
+
+    article:
+        math: true # 启用/禁用KaTeX渲染。
+        toc: true # 目录 默认值 .Site.Params.Article.toc， bool 类型，至少有一个标题才会显示
+        readingTime: true # 显示阅读时间
+        license:    
+            enabled: false
+            default: Licensed under CC BY-NC-SA 4.0
+        
+
+    comments:
+        enabled: true
+        provider: disqus
+
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+
+        beaudar:
+            repo:
+            issueTerm: pathname
+            label:
+            theme:
+
+        remark42:
+            host:
+            site:
+            locale:
+
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
+
+        # Waline client configuration see: https://waline.js.org/en/reference/component.html
+        waline:
+            serverURL:
+            lang:
+            pageview:
+            emoji:
+                - https://unpkg.com/@waline/emojis@1.0.1/weibo
+            requiredMeta:
+                - name
+                - email
+                - url
+            locale:
+                admin: Admin
+                placeholder:
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
+
+        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+        cactus:
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
+            serverName: "cactus.chat"
+            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+
+        gitalk:
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+            proxy:
+
+        cusdis:
+            host:
+            id:
+    widgets:
+        homepage:
+            - type: clock
+            - type: search
+            - type: archives
+              params:
+                  limit: 5
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site:
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+
+    # 更新时间：优先读取git时间 -> git时间不存在，就读取本地文件修改时间
+    frontmatter:
+        lastmod:
+          - :git
+          - :fileModTime
+
+    # 允许获取Git信息
+    enableGitInfo: true
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+    main: []
+
+    social:
+        - identifier: github
+          name: GitHub
+          url: https://github.com/cold-rivers-snow/
+          params:
+              icon: brand-github
+
+        - identifier: 公众号
+          name: 公众号
+          url: https://open.weixin.qq.com/qr/code?username=gh_019a337e33bf
+          params:
+              icon: brand-wechat
+
+        - identifier: zhihu
+          name: zhihu
+          url: https://www.zhihu.com/people/xue-shang-shuang
+          params:
+              icon: brand-zhihu
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: true
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
+    highlight:
+        noClasses: false
+        codeFences: true
+        guessSyntax: true
+        lineNoStart: 1
+        lineNos: true
+        lineNumbersInTable: true
+        tabWidth: 4
