@@ -17,4 +17,15 @@
     }
     
     showHideView();
+    document.addEventListener('pjax:complete', () => {
+      const existingScript = document.querySelector('script[src="https://cn.vercount.one/js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      const busuanziScript = document.createElement('script');
+      busuanziScript.src = 'https://cn.vercount.one/js';
+      busuanziScript.async = true;
+      document.body.appendChild(busuanziScript);
+      showHideView();
+    });
 </script>
