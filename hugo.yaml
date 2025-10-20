@@ -72,7 +72,7 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: giscus
 
         disqusjs:
             shortname:
@@ -133,15 +133,20 @@ params:
             siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
         giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
+            repo: cold-rivers-snow/cold-rivers-snow.github.io
+            repoID: R_kgDOQFRAmg
+            category: Announcements
+            categoryID: DIC_kwDOQFRAms4Cw3NC
+            mapping: pathname
+            strict: 0
             reactionsEnabled: 1
             emitMetadata: 0
+            inputPosition: bottom
+            theme: preferred_color_scheme
+            lang: zh-CN
+            loading: lazy
+            lightTheme:
+            darkTheme:
 
         gitalk:
             owner:
