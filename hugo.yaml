@@ -156,7 +156,7 @@ params:
             id:
     widgets:
         homepage:
-            - type: clock
+            # - type: clock
             - type: search
             - type: archives
               params:
