@@ -5,7 +5,10 @@
 <div id="aplayer"></div>
 <script>
     const staticDir = {{ .Site.Home.Permalink }}+ 'music/';
-    const songs = ['DreamIsPossible-Delacey'];
+    const songs = [
+        'DreamIsPossible-Delacey',
+        '匆匆那年-王菲',
+    ];
     let audios = [];
     songs.forEach((item) => {
       	const songInfo = item.split('-');
@@ -19,9 +22,9 @@
     })
     const ap = new APlayer({
 		    container: document.getElementById('aplayer'),
-        lrcType: 3,
+            lrcType: 3,
 		    fixed: true,
-		    listMaxHeight: '10px',
+		    listMaxHeight: '100px',
         audio: audios
     });
 
