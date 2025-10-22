@@ -1,0 +1,17 @@
+{{/* Usage: {{< code_include "path/to/file.go" "go" >}} 
+  Argument 0: filename (相对于项目根目录或 page bundle)
+  Argument 1: language (用于语法高亮)
+  Argument 2: options (可选，如 linenos=true)
+*/}}
+
+{{ $filePath := .Get 0 }}
+{{ $language := .Get 1 }}
+{{ $options := .Get 2 }}
+
+{{ with readFile $filePath }}
+    {{/* 读取文件内容成功 */}}
+    {{ highlight . $language $options }}
+{{ else }}
+    {{/* 文件读取失败或路径错误 */}}
+    {{ errorf "ERROR: Code file not found at %s" $filePath }}
+{{ end }}

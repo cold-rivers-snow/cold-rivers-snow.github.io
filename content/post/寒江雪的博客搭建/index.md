@@ -49,8 +49,8 @@ cover:   # 封面的详细信息
 
  Go 语言编写的静态网站生成器，构建速度快。它拥有丰富的主题和强大的功能。
 
-● extend 是模板继承的核心，通过 “父模板定义结构 + 子模板填充内容” 实现复用，适合统一布局的页面。
-● 非 extend 模板是独立的，通过 partial 或 template 手动组合，适合灵活的片段复用或独立页面。
+- extend 是模板继承的核心，通过 “父模板定义结构 + 子模板填充内容” 实现复用，适合统一布局的页面。
+- 非 extend 模板是独立的，通过 partial 或 template 手动组合，适合灵活的片段复用或独立页面。
 
 这里下载带有 extend 的安装包 如：[hugo_extended_0.151.2_windows-amd64.zip](https://github.com/gohugoio/hugo/releases/download/v0.151.2/hugo_extended_0.151.2_windows-amd64.zip)
 
@@ -690,6 +690,33 @@ hugo.exe
 ```
 
 查看仓库，Action
+
+## 文本用法
+
+引入外部内容
+
+{{% include "/post/_index.md" %}}
+
+{{< codefile "static/code/Array.cpp" "c++" "linenos=true" >}}
+
+{{< remotecode "https://raw.githubusercontent.com/gohugoio/hugo/master/main.go" "go" "linenos=true" >}}
+
+{{< remotecode "https://raw.githubusercontent.com/ceph/ceph/main/src/rgw/librgw.cc" "c++" "linenos=true" >}}
+
+关于 `github.com` 和 `raw.githubusercontent.com` 区别的比较：
+
+| 特性 | `github.com` | `raw.githubusercontent.com` |
+| :--- | :--- | :--- |
+| **主要目的** | 提供 **Web 界面、用户界面和代码仓库管理**。 | 提供 **原始、未经处理的文件内容**（Raw Content）。 |
+| **返回内容** | **HTML 页面**（包含导航栏、按钮、评论等）。 | **文件的纯文本**（或二进制）内容，没有 HTML 包装。 |
+| **Content-Type** | `text/html` | 通常是 `text/plain` 或文件对应的 Mime-Type。 |
+| **典型 URL 路径** | `.../user/repo/blob/main/file.go` | `.../user/repo/main/file.go` |
+| **使用场景** | 人类用户通过浏览器进行代码审查、提交、Issue 跟踪等操作。 | 机器或程序（如 Hugo、脚本）需要下载、读取、或直接使用文件内容。 |
+| **文件加载** | 文件内容被嵌入到网页的 HTML 结构中。 | 文件内容作为独立的数据流直接传输。 |
+
+引入外部链接
+
+{{< xrelref "/search.md"  >}}
 
 ## Reference
 
