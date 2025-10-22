@@ -1,0 +1,28 @@
+{{/* Usage: {{< remoteimg "https://remote.url/image.png" "Alt Text" "Optional Title" >}}
+  Argument 0: Remote Image URL
+  Argument 1: Alt Text
+  Argument 2: Title Text (Optional)
+*/}}
+
+{{ $url := .Get 0 }}
+{{ $alt := .Get 1 }}
+{{ $title := .Get 2 }}
+
+{{/* 1. 尝试从远程获取图片 */}}
+{{ $remoteImage := resources.GetRemote $url }}
+
+{{ with $remoteImage }}
+    {{/* 2. 将图片保存到站点的 asset 目录中，以便 Hugo 能够处理它 */}}
+    {{ $image := . }}
+    
+    {{/* 可选：如果你想对图片进行缩放或优化，可以在这里添加 .Resize, .Fit 等操作 */}}
+    
+    {{/* 3. 使用 .RelPermalink 生成一个本地链接 */}}
+    <img src="{{ $image.RelPermalink }}" alt="{{ $alt }}" {{ with $title }}title="{{ . }}"{{ end }}>
+
+{{ else }}
+    {{/* 4. 如果获取失败，显示错误或回退到原始链接 */}}
+    {{ errorf "ERROR: Failed to fetch remote image from %s" $url }}
+    {{/* 或者回退到原始 Markdown 标签，但可能会触发下载 */}}
+    <img src="{{ $url }}" alt="{{ $alt }}" {{ with $title }}title="{{ . }}"{{ end }}>
+{{ end }}

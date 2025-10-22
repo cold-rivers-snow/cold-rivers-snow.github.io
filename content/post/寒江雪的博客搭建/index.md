@@ -699,6 +699,12 @@ hugo.exe
 
 {{< codefile "static/code/Array.cpp" "c++" "linenos=true" >}}
 
+短代码支持语雀导出得图片链接
+
+{{< remoteimg "https://cdn.nlark.com/yuque/0/2025/png/26702718/1760772304123-3c154030-a93d-404a-b2d9-a74719077072.png" "终端启动" >}}
+
+短代码支持 github 中代码文件引用
+
 {{< remotecode "https://raw.githubusercontent.com/gohugoio/hugo/master/main.go" "go" "linenos=true" >}}
 
 {{< remotecode "https://raw.githubusercontent.com/ceph/ceph/main/src/rgw/librgw.cc" "c++" "linenos=true" >}}
