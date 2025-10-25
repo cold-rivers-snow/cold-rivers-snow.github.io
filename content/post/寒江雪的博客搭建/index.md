@@ -1,7 +1,7 @@
 ---
 title: "寒江雪的博客搭建"
 date: 2025-10-21T20:04:14+08:00
-lastmod: 2025-10-21T20:04:14+08:00
+# lastmod: 2025-10-21T20:04:14+08:00
 author: ["寒江雪"]
 
 categories:
@@ -46,6 +46,8 @@ cover:   # 封面的详细信息
 [hugo github]([https://github.com/gohugoio/hugo](https://github.com/gohugoio/hugo))
 
 [官网]([https://gohugo.io/](https://gohugo.io/))
+
+[官方文档](https://hugo.opendocs.io/)
 
  Go 语言编写的静态网站生成器，构建速度快。它拥有丰富的主题和强大的功能。
 
@@ -691,6 +693,38 @@ hugo.exe
 
 查看仓库，Action
 
+## 搭建图床
+
+### picgo
+
+#### picgo的下载
+
+首先在浏览器内直接搜索picgo
+
+[GitHub下载链接](https://github.com/Molunerfinn/PicGo/releases)
+
+#### picgo的配置
+
+插件设置搜索 bilibil 或 [bilibili github 地址](https://github.com/xlzy520/picgo-plugin-bilibili)
+
+点击安装，依赖，需要提前安装 [nodejs](https://nodejs.org/zh-cn/download)
+
+登录 b 站 f12 获取以下值
+
+![bilibili获取值](./bilibili.png)
+
+将SESSDATA复制到picgo的SESSDATA中；将bili_jct复制到picgo的csrf中
+
+![bilibili配置值](./bilibili2.png)
+
+配置默认远程服务
+
+![bilibilidefault](./bilibili3.png)
+
+### typora
+
+![typora 配置](https://i0.hdslb.com/bfs/openplatform/19b66c851035a1037a48ed05e468e01680973e2f.png)
+
 ## 文本用法
 
 引入外部内容
@@ -749,3 +783,5 @@ hugo.exe
 [https://github.com/JanePHPDev/TurboFeLy](https://github.com/JanePHPDev/TurboFeLy) 替代 pjax
 
 [https://www.heyjude.blog/zh-cn/posts/giscus-comments-hugo/](https://www.heyjude.blog/zh-cn/posts/giscus-comments-hugo/)
+
+https://www.cnblogs.com/AxonoSensei/p/19052814
