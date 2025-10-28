@@ -130,7 +130,7 @@ git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-them
 
 然后修改 hugo.yaml 中的内容
 
-[icons 官方地址]([https://tabler.io/icons](https://tabler.io/icons))
+[icons 官方地址](https://tabler.io/icons)
 
 一篇博客文章的目录：
 

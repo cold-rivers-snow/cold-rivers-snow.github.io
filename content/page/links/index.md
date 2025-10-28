@@ -13,6 +13,14 @@ links:
     description: 杨雪山的博客.
     website: https://www.88-bit.com/
     image: https://avatars.githubusercontent.com/u/31204210?v=4
+  - title: jdk 下载
+    description: jdk 国内下载.
+    website: https://ddonano.github.io/post/JDK-guo-nei-jing-xiang-jia-su-xia-zai.html
+    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+  - title: 算法面经
+    description: labuladong.
+    website: https://labuladong.online/
+    image: https://labuladong.online/algo/
 menu:
     main: 
         weight: -50
