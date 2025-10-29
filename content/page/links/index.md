@@ -21,6 +21,12 @@ links:
     description: labuladong.
     website: https://labuladong.online/
     image: https://labuladong.online/algo/
+  - title: c++ 标准库
+    description: 标准库查询和 c++ 学习.
+    website: https://cplusplus.com/
+  - title: 微信读书
+    description: 读书专用神器.
+    website: https://r.qq.com/
 menu:
     main: 
         weight: -50
