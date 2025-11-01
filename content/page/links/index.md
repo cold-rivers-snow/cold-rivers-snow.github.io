@@ -27,6 +27,12 @@ links:
   - title: 微信读书
     description: 读书专用神器.
     website: https://r.qq.com/
+  - title: 云风的博客
+    description: 云风的博客.
+    website: https://blog.codingnow.com/
+  - title: 陈硕的网站
+    description: 陈硕的网站.
+    website: https://www.chenshuo.com/
 menu:
     main: 
         weight: -50
