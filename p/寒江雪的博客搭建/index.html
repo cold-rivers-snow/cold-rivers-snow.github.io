@@ -1,0 +1,3076 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="博客搭建实践">
+<title>寒江雪的博客搭建</title>
+
+<link rel='canonical' href='https://cold-rivers-snow.github.io/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.1094951ff26ff20f87a78f7b56d51913e47786ecfa19c41f35a0d4979ad300e0.css"><meta property='og:title' content="寒江雪的博客搭建">
+<meta property='og:description' content="博客搭建实践">
+<meta property='og:url' content='https://cold-rivers-snow.github.io/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/'>
+<meta property='og:site_name' content='寒江雪的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-21T20:04:14&#43;08:00'/><meta property='article:modified_time' content='2025-10-21T20:04:14&#43;08:00'/>
+<meta name="twitter:title" content="寒江雪的博客搭建">
+<meta name="twitter:description" content="博客搭建实践">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_e004598c542ead32.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">⚽</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">寒江雪的博客</a></h1>
+            <h2 class="site-description">山重水复疑无路，柳暗花明又一村</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/cold-rivers-snow/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.zhihu.com/people/xue-shang-shuang'
+                        target="_blank"
+                        title="zhihu"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-zhihu"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 6h6v12h-2l-2 2l-1 -2h-1z" /><path d="M4 12h6.5" /><path d="M10.5 6h-5" /><path d="M6 4c-.5 2.5 -1.5 3.5 -2.5 4.5" /><path d="M8 6v7c0 4.5 -2 5.5 -4 7" /><path d="M11 18l-3 -5" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://open.weixin.qq.com/qr/code?username=gh_019a337e33bf'
+                        target="_blank"
+                        title="公众号"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-wechat"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z" /><path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233" /><path d="M10 8h.01" /><path d="M7 8h.01" /><path d="M15 14h.01" /><path d="M18 14h.01" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%AC%E5%91%8A/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-flag-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13.13 14.833a5.002 5.002 0 0 1 -1.13 -.833a5 5 0 0 0 -7 0v-9a5 5 0 0 1 7 0a5 5 0 0 0 7 0v8" /><path d="M5 21v-7" /><path d="M16 22l5 -5" /><path d="M21 21.5v-4.5h-4.5" /></svg>
+                
+                <span>公告</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hugo">Hugo</a>
+      <ol>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#hugo-目录结构">Hugo 目录结构</a></li>
+        <li><a href="#配置主题">配置主题</a>
+          <ol>
+            <li><a href="#修改字体">修改字体</a></li>
+            <li><a href="#eye">eye</a></li>
+            <li><a href="#友链归档多列显示">友链、归档多列显示</a></li>
+            <li><a href="#文章目录折叠展开">文章目录折叠&amp;展开</a></li>
+            <li><a href="#返回顶页按钮">返回顶页按钮</a></li>
+            <li><a href="#自定义md引用块颜色模板">自定义MD引用块颜色模板</a></li>
+            <li><a href="#代码块过长折叠展开">代码块过长折叠&amp;展开</a></li>
+            <li><a href="#加入音乐">加入音乐</a></li>
+            <li><a href="#加入评论-giscus">加入评论 giscus</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#github-部署">github 部署</a></li>
+    <li><a href="#搭建图床">搭建图床</a>
+      <ol>
+        <li><a href="#picgo">picgo</a>
+          <ol>
+            <li><a href="#picgo的下载">picgo的下载</a></li>
+            <li><a href="#picgo的配置">picgo的配置</a></li>
+          </ol>
+        </li>
+        <li><a href="#typora">typora</a></li>
+      </ol>
+    </li>
+    <li><a href="#文本用法">文本用法</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hugo/" >
+                Hugo
+            </a>
+        
+            <a href="/categories/%E5%8D%9A%E5%AE%A2/" >
+                博客
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">寒江雪的博客搭建</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published">2025-10-21</time>
+                </div>
+            
+
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-10-21 20:04:14 &#43;0800 &#43;0800" title="2025-10-21 20:04:14 &#43;0800 &#43;0800">
+                            2025-10-21
+                        </time>
+
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        阅读时长: 13 分钟
+                    </time>
+                </div>
+                
+                <div id="viewCount">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                    <time class="article-time--reading">
+                        
+                        <span id="vercount_value_page_pv">loading... </span>次
+                    </time>
+                </div>
+            
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="hugo">Hugo
+</h2><h3 id="简介">简介
+</h3><p><a class="link" href="[https://github.com/gohugoio/hugo/tags]%28https://github.com/gohugoio/hugo/tags%29" >下载地址</a></p>
+<p><a class="link" href="[https://github.com/gohugoio/hugo]%28https://github.com/gohugoio/hugo%29" >hugo github</a></p>
+<p><a class="link" href="[https://gohugo.io/]%28https://gohugo.io/%29" >官网</a></p>
+<p><a class="link" href="https://hugo.opendocs.io/"  target="_blank" rel="noopener"
+    >官方文档</a></p>
+<p>Go 语言编写的静态网站生成器，构建速度快。它拥有丰富的主题和强大的功能。</p>
+<ul>
+<li>extend 是模板继承的核心，通过 “父模板定义结构 + 子模板填充内容” 实现复用，适合统一布局的页面。</li>
+<li>非 extend 模板是独立的，通过 partial 或 template 手动组合，适合灵活的片段复用或独立页面。</li>
+</ul>
+<p>这里下载带有 extend 的安装包 如：<a class="link" href="https://github.com/gohugoio/hugo/releases/download/v0.151.2/hugo_extended_0.151.2_windows-amd64.zip"  target="_blank" rel="noopener"
+    >hugo_extended_0.151.2_windows-amd64.zip</a></p>
+<p>下载下来只有一个安装包二进制文件，README.md hugo 简介，LICENSE 协议</p>
+<p>创建博客文件，用于存放博客内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">.\hugo.exe new site hjxblog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image.png"
+	width="1072"
+	height="343"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image_hu_4066af7f6a543149.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image_hu_949991314977e953.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="312"
+		data-flex-basis="750px"
+	
+></p>
+<h3 id="hugo-目录结构">Hugo 目录结构
+</h3><p><a class="link" href="[https://gohugo.io/getting-started/directory-structure/]%28https://gohugo.io/getting-started/directory-structure/%29" >官方目录说明</a></p>
+<p>默认生成的目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── archetypes
+</span></span><span class="line"><span class="cl">│   └── default.md
+</span></span><span class="line"><span class="cl">├── assets
+</span></span><span class="line"><span class="cl">├── content
+</span></span><span class="line"><span class="cl">├── data
+</span></span><span class="line"><span class="cl">├── i18n
+</span></span><span class="line"><span class="cl">├── layouts
+</span></span><span class="line"><span class="cl">├── static
+</span></span><span class="line"><span class="cl">├── resources
+</span></span><span class="line"><span class="cl">├── themes
+</span></span><span class="line"><span class="cl">└── config.toml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>文件名称</th>
+          <th style="text-align: center">简要说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>archetypes</td>
+          <td style="text-align: center">该文件夹主要用来存储博客生成的模板文件，初次使用只有一个default.md，可以根据个人的主题配置添加自定义头部信息</td>
+      </tr>
+      <tr>
+          <td>assets</td>
+          <td style="text-align: center">该文件夹主要用于保存博客样式<code>css</code>和<code>js</code>文件，通过资源观点传递的全局资源</td>
+      </tr>
+      <tr>
+          <td>content</td>
+          <td style="text-align: center">保存个人博客所有内容</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td style="text-align: center">保存生成站点时候所需要的配置文件，用于增强内容、配置、本地化和导航的数据文件</td>
+      </tr>
+      <tr>
+          <td>i18n</td>
+          <td style="text-align: center">多语言站点的翻译表</td>
+      </tr>
+      <tr>
+          <td>layouts</td>
+          <td style="text-align: center">以为<code>.html</code>形式存储模板，将你博客内容呈现为静态页面，包含将内容、数据和资源转换为完整网站的模板</td>
+      </tr>
+      <tr>
+          <td>static</td>
+          <td style="text-align: center">存储所有静态内容：图片、<code>.css</code>、.<code>js</code>等，当使用 Hugo 生成静态页面时，构建站点时所有内容将会被复制到 public 目录文件</td>
+      </tr>
+      <tr>
+          <td>themes</td>
+          <td style="text-align: center">保存主题，可以包含一个或多个，每个主题位于自己的子目录中</td>
+      </tr>
+      <tr>
+          <td>hugo.toml</td>
+          <td style="text-align: center">个人博客主题样式配置文件</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>启动 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">..\hugo.exe server -D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image1.png"
+	width="1809"
+	height="581"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image1_hu_37f9ad0c0004e579.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image1_hu_3823c75e62369ed6.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="311"
+		data-flex-basis="747px"
+	
+></p>
+<h3 id="配置主题">配置主题
+</h3><p>Hugo 默认不带主题，因此你需要去 <a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
+    >主题社区</a> 下载主题，本文下载 Stack 和PaperMod 测试主题</p>
+<p><a class="link" href="[https://stack.jimmycai.com/]%28https://stack.jimmycai.com/%29" >Stack 文档</a></p>
+<p>可以直接下载 release 版本 zip 包，加压到 theme 下，或者使用 submodule 方式直接 clone</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>负责 stack 中的<code>exampleSite</code>样例数据中的 Content 和 hugo.yaml 复制到主文件夹中</p>
+<p>要修改主题，你必须将想要修改的文件复制到<code>layouts</code>目录下的相同路径中。</p>
+<p>例如，若要修改<code>themes/hugo-theme-stack/layouts/partials/header.html</code>文件，你需要将其复制到<code>layouts/partials/header.html</code>，并在那里进行修改（从主题的代码库中复制代码）。这一规则同样适用于<code>assets</code>和<code>static</code>目录。</p>
+<p>修改根目录下的文件，可以替换多种主题，通过 git submoudle 方式可以修改主题中的内容，用于自己想要的开发。</p>
+<p>然后修改 hugo.yaml 中的内容</p>
+<p><a class="link" href="https://tabler.io/icons"  target="_blank" rel="noopener"
+    >icons 官方地址</a></p>
+<p>一篇博客文章的目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">content
+</span></span><span class="line"><span class="cl">└── post
+</span></span><span class="line"><span class="cl">    └── my-first-post
+</span></span><span class="line"><span class="cl">        ├── index.md
+</span></span><span class="line"><span class="cl">        ├── image1.png
+</span></span><span class="line"><span class="cl">        └── image2.png
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>content 内容构造格式： <a class="link" href="https://gohugo.io/content-management/sections/"  target="_blank" rel="noopener"
+    >https://gohugo.io/content-management/sections/</a></p>
+<p>短代码嵌入视频链接或代码片段 <a class="link" href="https://stack.jimmycai.com/writing/shortcodes"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/writing/shortcodes</a></p>
+<p>自定义菜单： <a class="link" href="https://stack.jimmycai.com/config/menu"  target="_blank" rel="noopener"
+    >https://stack.jimmycai.com/config/menu</a></p>
+<h4 id="修改字体">修改字体
+</h4><p>下载 <a class="link" href="[https://www.100font.com/]%28https://www.100font.com/%29" >100font</a></p>
+<p>把字体文件放入assets/font下</p>
+<p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image2.png"
+	width="261"
+	height="75"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image2_hu_5c80d612662f476c.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image2_hu_a01d9af160d4f484.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="348"
+		data-flex-basis="835px"
+	
+></p>
+<p>将以下代码修改并复制到layouts/partials/footer/custom.html`文件中(文件不存在就自己创建)</p>
+<pre><code>- **字体名**：给字体命名一个别名，随便填写就好，保持统一就行
+- **字体文件名**：字体文件的全名，带后缀名的，也就是 **xxx.ttf**
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">  @font-face {
+</span></span><span class="line"><span class="cl">    font-family: &#39;ChillKai&#39;;
+</span></span><span class="line"><span class="cl">    src: url({{ (resources.Get &#34;font/ChillKai.ttf&#34;).Permalink }}) format(&#39;truetype&#39;);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  :root {
+</span></span><span class="line"><span class="cl">    --base-font-family: &#39;ChillKai&#39;;
+</span></span><span class="line"><span class="cl">    --code-font-family: &#39;ChillKai&#39;;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="eye">eye
+</h4><p><a class="link" href="https://letere-gzj.github.io/hugo-stack/p/hugo/view-count/"  target="_blank" rel="noopener"
+    >https://letere-gzj.github.io/hugo-stack/p/hugo/view-count/</a></p>
+<h4 id="友链归档多列显示">友链、归档多列显示
+</h4><p>修改assets/scss/custom.scss`文件(不存在则自行创建)，引入以下css样式代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">@media (min-width: 1024px) {
+</span></span><span class="line"><span class="cl">  .article-list--compact {
+</span></span><span class="line"><span class="cl">    display: grid;
+</span></span><span class="line"><span class="cl">    // 目前是两列，如需三列，则后面再加一个1fr，以此类推
+</span></span><span class="line"><span class="cl">    grid-template-columns: 1fr 1fr;
+</span></span><span class="line"><span class="cl">    background: none;
+</span></span><span class="line"><span class="cl">    box-shadow: none;
+</span></span><span class="line"><span class="cl">    gap: 1rem;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    article {
+</span></span><span class="line"><span class="cl">      background: var(--card-background);
+</span></span><span class="line"><span class="cl">      border: none;
+</span></span><span class="line"><span class="cl">      box-shadow: var(--shadow-l2);
+</span></span><span class="line"><span class="cl">      margin-bottom: 8px;
+</span></span><span class="line"><span class="cl">      margin-right: 8px;
+</span></span><span class="line"><span class="cl">      border-radius: 16px;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="文章目录折叠展开">文章目录折叠&amp;展开
+</h4><p>将以下代码复制到layouts/partials/footer/custom.html文件中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    #TableOfContents &gt; ul, ol {
+</span></span><span class="line"><span class="cl">        ul, ol {
+</span></span><span class="line"><span class="cl">            display: none;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        .open {
+</span></span><span class="line"><span class="cl">            display: block;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;script&gt;
+</span></span><span class="line"><span class="cl">    function initTocHide() {
+</span></span><span class="line"><span class="cl">        // 判断是否存在文章目录
+</span></span><span class="line"><span class="cl">        let toc = document.querySelector(&#34;.widget--toc&#34;);
+</span></span><span class="line"><span class="cl">        if (!toc) {
+</span></span><span class="line"><span class="cl">            return;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        // 监听滚动
+</span></span><span class="line"><span class="cl">        window.addEventListener(&#39;scroll&#39;, function() {
+</span></span><span class="line"><span class="cl">            //清除class值
+</span></span><span class="line"><span class="cl">            let openUl = document.querySelectorAll(&#34;.open&#34;);
+</span></span><span class="line"><span class="cl">            if (openUl.length &gt; 0) {
+</span></span><span class="line"><span class="cl">              openUl.forEach((ul) =&gt; {
+</span></span><span class="line"><span class="cl">                ul.classList.remove(&#34;open&#34;)
+</span></span><span class="line"><span class="cl">              })
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            // 获取active-class
+</span></span><span class="line"><span class="cl">            let currentLi = document.querySelector(&#34;.active-class&#34;);
+</span></span><span class="line"><span class="cl">            if (!currentLi) {
+</span></span><span class="line"><span class="cl">                return
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            // 展示子ul
+</span></span><span class="line"><span class="cl">            if (currentLi.children.length &gt; 1) {
+</span></span><span class="line"><span class="cl">                currentLi.children[1].classList.add(&#34;open&#34;)
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">            // 展示父ul
+</span></span><span class="line"><span class="cl">            let ul = currentLi.parentElement;
+</span></span><span class="line"><span class="cl">            do {
+</span></span><span class="line"><span class="cl">                ul.classList.add(&#34;open&#34;);
+</span></span><span class="line"><span class="cl">                ul = ul.parentElement.parentElement
+</span></span><span class="line"><span class="cl">            } while (ul !== undefined &amp;&amp; (ul.localName === &#39;ul&#39; || ul.localName === &#39;ol&#39;))
+</span></span><span class="line"><span class="cl">        });
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    initTocHide()
+</span></span><span class="line"><span class="cl">&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="返回顶页按钮">返回顶页按钮
+</h4><p><a class="link" href="https://icon-icons.com/zh/"  target="_blank" rel="noopener"
+    >https://icon-icons.com/zh/</a></p>
+<p>准备一张<a class="link" href="https://letere-gzj.github.io/hugo-stack/p/hugo/custom-stack-theme/backTop.svg"  target="_blank" rel="noopener"
+    >返回顶部图片</a>，放到assets/icons`文件夹下</p>
+<p>将以下代码复制到layouts/partials/footer/custom.html`文件中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    #backTopBtn {
+</span></span><span class="line"><span class="cl">        display: none;
+</span></span><span class="line"><span class="cl">        position: fixed;
+</span></span><span class="line"><span class="cl">        bottom: 30px;
+</span></span><span class="line"><span class="cl">        z-index: 99;
+</span></span><span class="line"><span class="cl">        cursor: pointer;
+</span></span><span class="line"><span class="cl">        width: 30px;
+</span></span><span class="line"><span class="cl">        height: 30px;
+</span></span><span class="line"><span class="cl">        background-image: url({{ (resources.Get &#34;icons/backTop.svg&#34;).Permalink }});
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;script&gt;
+</span></span><span class="line"><span class="cl">    /**
+</span></span><span class="line"><span class="cl">     * 滚动回顶部初始化
+</span></span><span class="line"><span class="cl">     */
+</span></span><span class="line"><span class="cl">    function initScrollTop() {
+</span></span><span class="line"><span class="cl">        let rightSideBar = document.querySelector(&#34;.right-sidebar&#34;);
+</span></span><span class="line"><span class="cl">        if (!rightSideBar) {
+</span></span><span class="line"><span class="cl">            return;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        // 添加返回顶部按钮到右侧边栏
+</span></span><span class="line"><span class="cl">        let btn = document.createElement(&#34;div&#34;);
+</span></span><span class="line"><span class="cl">        btn.id = &#34;backTopBtn&#34;;
+</span></span><span class="line"><span class="cl">        btn.onclick = backToTop
+</span></span><span class="line"><span class="cl">        rightSideBar.appendChild(btn)
+</span></span><span class="line"><span class="cl">        // 滚动监听
+</span></span><span class="line"><span class="cl">        window.onscroll = function() {
+</span></span><span class="line"><span class="cl">            // 当网页向下滑动 20px 出现&#34;返回顶部&#34; 按钮
+</span></span><span class="line"><span class="cl">            if (document.body.scrollTop &gt; 20 || document.documentElement.scrollTop &gt; 20) {
+</span></span><span class="line"><span class="cl">                btn.style.display = &#34;block&#34;;
+</span></span><span class="line"><span class="cl">            } else {
+</span></span><span class="line"><span class="cl">                btn.style.display = &#34;none&#34;;
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">        };
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    /**
+</span></span><span class="line"><span class="cl">     * 返回顶部
+</span></span><span class="line"><span class="cl">     */
+</span></span><span class="line"><span class="cl">    function backToTop(){
+</span></span><span class="line"><span class="cl">        window.scrollTo({ top: 0, behavior: &#34;smooth&#34; })
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    initScrollTop();
+</span></span><span class="line"><span class="cl">&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="自定义md引用块颜色模板">自定义MD引用块颜色模板
+</h4><p>创建文件layouts/_default/_markup/render-blockquote-alert.html`，并将以下代码复制进去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;blockquote class=&#34;alert alert-{{ .AlertType }}&#34;&gt;
+</span></span><span class="line"><span class="cl">    {{ .Text | safeHTML -}}
+</span></span><span class="line"><span class="cl">&lt;/blockquote&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将以下代码复制进assets/scss/custom.scss`文件中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">[data-scheme=&#34;light&#34;] {
+</span></span><span class="line"><span class="cl">  .alert-note {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #65bbee;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #e7f2fa;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-tip {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #55aa55;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #eeffee;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-warn {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #ffbb78;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #ffeecc;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-error {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #cc3334;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #ffeeef;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[data-scheme=&#34;dark&#34;] {
+</span></span><span class="line"><span class="cl">  .alert-note {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #006699;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #002234;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-tip {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #336733;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #112310;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-warn {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #aa5501;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #452300;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  .alert-error {
+</span></span><span class="line"><span class="cl">    --card-separator-color: #880000;
+</span></span><span class="line"><span class="cl">    --blockquote-background-color: #450000;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用方法</p>
+<ul>
+<li>可选项：<strong>NOTE</strong> | <strong>TIP</strong> | <strong>WARN</strong> | <strong>ERROR</strong></li>
+<li>可仿照上面css写法，自行添加新的css样式，来实现更多的可选项</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&gt; [!NOTE]
+</span></span><span class="line"><span class="cl">&gt; 这是markdown的引用块语法
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="代码块过长折叠展开">代码块过长折叠&amp;展开
+</h4><p>准备一张<a class="link" href="https://letere-gzj.github.io/hugo-stack/p/hugo/custom-stack-theme/codeMore.png"  target="_blank" rel="noopener"
+    >向下展开图片</a>(<strong>Ctrl</strong>+<strong>S</strong>保存)，放到assets/icons`目录下</p>
+<p>将以下代码复制进layouts/partials/footer/custom.html`</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    .highlight {
+</span></span><span class="line"><span class="cl">        /* 你可以根据需要调整这个高度 */
+</span></span><span class="line"><span class="cl">        max-height: 400px;
+</span></span><span class="line"><span class="cl">        overflow: hidden;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .code-show {
+</span></span><span class="line"><span class="cl">        max-height: none !important;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .code-more-box {
+</span></span><span class="line"><span class="cl">        width: 100%;
+</span></span><span class="line"><span class="cl">        padding-top: 78px;
+</span></span><span class="line"><span class="cl">        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+</span></span><span class="line"><span class="cl">        position: absolute;
+</span></span><span class="line"><span class="cl">        left: 0;
+</span></span><span class="line"><span class="cl">        right: 0;
+</span></span><span class="line"><span class="cl">        bottom: 0;
+</span></span><span class="line"><span class="cl">        z-index: 1;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .code-more-btn {
+</span></span><span class="line"><span class="cl">        display: block;
+</span></span><span class="line"><span class="cl">        margin: auto;
+</span></span><span class="line"><span class="cl">        width: 44px;
+</span></span><span class="line"><span class="cl">        height: 22px;
+</span></span><span class="line"><span class="cl">        background: #f0f0f5;
+</span></span><span class="line"><span class="cl">        border-top-left-radius: 8px;
+</span></span><span class="line"><span class="cl">        border-top-right-radius: 8px;
+</span></span><span class="line"><span class="cl">        padding-top: 6px;
+</span></span><span class="line"><span class="cl">        cursor: pointer;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    .code-more-img {
+</span></span><span class="line"><span class="cl">        cursor: pointer !important;
+</span></span><span class="line"><span class="cl">        display: block;
+</span></span><span class="line"><span class="cl">        margin: auto;
+</span></span><span class="line"><span class="cl">        width: 22px;
+</span></span><span class="line"><span class="cl">        height: 16px;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;script&gt;
+</span></span><span class="line"><span class="cl">  function initCodeMoreBox() {
+</span></span><span class="line"><span class="cl">    let codeBlocks = document.querySelectorAll(&#34;.highlight&#34;);
+</span></span><span class="line"><span class="cl">    if (!codeBlocks) {
+</span></span><span class="line"><span class="cl">      return;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    codeBlocks.forEach(codeBlock =&gt; {
+</span></span><span class="line"><span class="cl">      // 校验是否overflow
+</span></span><span class="line"><span class="cl">      if (codeBlock.scrollHeight &lt;= codeBlock.clientHeight) {
+</span></span><span class="line"><span class="cl">        return;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">      // 元素初始化
+</span></span><span class="line"><span class="cl">      // codeMoreBox
+</span></span><span class="line"><span class="cl">      let codeMoreBox = document.createElement(&#39;div&#39;);
+</span></span><span class="line"><span class="cl">      codeMoreBox.classList.add(&#39;code-more-box&#39;);
+</span></span><span class="line"><span class="cl">      // codeMoreBtn
+</span></span><span class="line"><span class="cl">      let codeMoreBtn = document.createElement(&#39;span&#39;);
+</span></span><span class="line"><span class="cl">      codeMoreBtn.classList.add(&#39;code-more-btn&#39;);
+</span></span><span class="line"><span class="cl">      codeMoreBtn.addEventListener(&#39;click&#39;, () =&gt; {
+</span></span><span class="line"><span class="cl">        codeBlock.classList.add(&#39;code-show&#39;);
+</span></span><span class="line"><span class="cl">        codeMoreBox.style.display = &#39;none&#39;;
+</span></span><span class="line"><span class="cl">        // 触发resize事件，重新计算目录位置
+</span></span><span class="line"><span class="cl">        window.dispatchEvent(new Event(&#39;resize&#39;))
+</span></span><span class="line"><span class="cl">      })
+</span></span><span class="line"><span class="cl">      // img
+</span></span><span class="line"><span class="cl">      let img = document.createElement(&#39;img&#39;);
+</span></span><span class="line"><span class="cl">      img.classList.add(&#39;code-more-img&#39;);
+</span></span><span class="line"><span class="cl">      img.src = {{ (resources.Get &#34;icons/codeMore.png&#34;).Permalink }}
+</span></span><span class="line"><span class="cl">      // 元素添加
+</span></span><span class="line"><span class="cl">      codeMoreBtn.appendChild(img);
+</span></span><span class="line"><span class="cl">      codeMoreBox.appendChild(codeMoreBtn);
+</span></span><span class="line"><span class="cl">      codeBlock.appendChild(codeMoreBox)
+</span></span><span class="line"><span class="cl">    })
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  initCodeMoreBox();
+</span></span><span class="line"><span class="cl">&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="加入音乐">加入音乐
+</h4><p>[<a class="link" href="https://aplayer.js.org/#/zh-Hans/"  target="_blank" rel="noopener"
+    >Aplayer官方文档</a>](<a class="link" href="https://aplayer.js.org/#/zh-Hans/"  target="_blank" rel="noopener"
+    >https://aplayer.js.org/#/zh-Hans/</a>)</p>
+<p>查看官方文档，引入对应的脚本，css到layouts\partials\footer\custom.html`中，页面最下面就会出现音乐播放器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;!-- 【custom.html】 --&gt;
+</span></span><span class="line"><span class="cl">&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;div id=&#34;aplayer&#34;&gt;&lt;/div&gt;
+</span></span><span class="line"><span class="cl">&lt;script src=&#34;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;script&gt;
+</span></span><span class="line"><span class="cl">const ap = new APlayer({
+</span></span><span class="line"><span class="cl">    container: document.getElementById(&#39;aplayer&#39;),
+</span></span><span class="line"><span class="cl">    audio: []
+</span></span><span class="line"><span class="cl">});
+</span></span><span class="line"><span class="cl">&lt;/script&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改 <strong>ap对象</strong> 配置，改成吸底模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">const ap = new APlayer({
+</span></span><span class="line"><span class="cl">    ...,
+</span></span><span class="line"><span class="cl">    // 吸底模式
+</span></span><span class="line"><span class="cl">    fixed: true
+</span></span><span class="line"><span class="cl">});
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>填写 <strong>audio</strong> 数组，引入歌曲，封面和歌词</p>
+<ul>
+<li><strong>lrcType</strong> 的值具体看【<a class="link" href="https://aplayer.js.org/#/zh-Hans/?id=%E6%AD%8C%E8%AF%8D"  target="_blank" rel="noopener"
+    >文档</a>】<a class="link" href="https://aplayer.js.org/#/zh-Hans/?id=%E6%AD%8C%E8%AF%8D"  target="_blank" rel="noopener"
+    >https://aplayer.js.org/#/zh-Hans/?id=%E6%AD%8C%E8%AF%8D</a></li>
+<li>歌曲，封面，歌词支持远程链接 or 本地路径</li>
+<li>若想通过本地路径引入，请将资源文件放在static<code>文件夹下，通过hugo方法{{ .Site.Home.Permalink }}</code>，获取网站主路径来拼接文件路径，进行引入</li>
+</ul>
+<h4 id="加入评论-giscus">加入评论 giscus
+</h4><p><a class="link" href="https://giscus.app/zh-CN"  target="_blank" rel="noopener"
+    >https://giscus.app/zh-CN</a> 进入官网，仓库开启条件</p>
+<p>setting-&gt;general-&gt;feature   选择 <strong>Discussions</strong></p>
+<p>进入 <a class="link" href="https://github.com/apps/giscus"  target="_blank" rel="noopener"
+    >https://github.com/apps/giscus</a> 安装</p>
+<p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image3.png"
+	width="1271"
+	height="981"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image3_hu_94b9b8974559cea5.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image3_hu_6d2ed49f88fb71d5.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="310px"
+	
+></p>
+<p>将生成的 html 记住，将 theme /stack 中的搜giscus.html 将其放入到对应的根目录下</p>
+<p>配置 Hugo</p>
+<p>修改配置文件</p>
+<p>非 yaml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">[params.giscus]
+</span></span><span class="line"><span class="cl">enable = true
+</span></span><span class="line"><span class="cl">repo = &#34;cold-rivers-snow/cold-rivers-snow.github.io&#34;  # 替换为您的 GitHub 仓库
+</span></span><span class="line"><span class="cl">repoId = &#34;R_kgDOJpljfQ&#34;            # 替换为您的仓库 ID
+</span></span><span class="line"><span class="cl">category = &#34;General&#34;                # 评论分类
+</span></span><span class="line"><span class="cl">categoryId = &#34;DIC_kwDOJpljfc4CoOtn&#34; # 替换为您的分类 ID
+</span></span><span class="line"><span class="cl">mapping = &#34;title&#34;                   # 使用文章标题作为映射
+</span></span><span class="line"><span class="cl">strict = 0                          # 严格模式
+</span></span><span class="line"><span class="cl">reactionsEnabled = 1                # 启用反应
+</span></span><span class="line"><span class="cl">emitMetadata = 0                    # 不发送元数据
+</span></span><span class="line"><span class="cl">inputPosition = &#34;top&#34;               # 评论框位置
+</span></span><span class="line"><span class="cl">theme = &#34;preferred_color_scheme&#34;    # 跟随系统主题
+</span></span><span class="line"><span class="cl">lang = &#34;zh-CN&#34;                      # 语言设置
+</span></span><span class="line"><span class="cl">loading = &#34;lazy&#34;                    # 懒加载
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>yaml：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">comments:
+</span></span><span class="line"><span class="cl">    enabled: true
+</span></span><span class="line"><span class="cl">    # giscus, disqus, utterances, waline, artalk, twikoo
+</span></span><span class="line"><span class="cl">    system: &#34;giscus&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    giscus:
+</span></span><span class="line"><span class="cl">      repo: &#34;data-repo&#34;
+</span></span><span class="line"><span class="cl">      repoId: &#34;data-repo-id&#34;
+</span></span><span class="line"><span class="cl">      category: &#34;Announcements&#34;
+</span></span><span class="line"><span class="cl">      categoryId: &#34;data-category-id&#34;
+</span></span><span class="line"><span class="cl">      mapping: &#34;pathname&#34;
+</span></span><span class="line"><span class="cl">      strict: &#34;0&#34;
+</span></span><span class="line"><span class="cl">      reactionsEnabled: &#34;1&#34;
+</span></span><span class="line"><span class="cl">      emitMetadata: &#34;0&#34;
+</span></span><span class="line"><span class="cl">      inputPosition: &#34;bottom&#34;
+</span></span><span class="line"><span class="cl">      theme: &#34;preferred_color_scheme&#34;
+</span></span><span class="line"><span class="cl">      lang: &#34;en&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>repoid  获取 <a class="link" href="https://api.github.com/repos/%e7%94%a8%e6%88%b7%e5%90%8d/%e4%bb%93%e5%ba%93%e5%90%8d"  target="_blank" rel="noopener"
+    >https://api.github.com/repos/用户名/仓库名</a></p>
+<p>最终你会在文章底部看到这样一个界面：</p>
+<p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image4.png"
+	width="904"
+	height="319"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image4_hu_4a71db2f3fd42d16.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image4_hu_1236e687953d7b9e.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="680px"
+	
+></p>
+<p>pjax 修复</p>
+<p>修改layouts/partials/comments/include.html，添加一个元素标识，方便判断文章是否开启了评论</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">{{</span> <span class="k">if</span> <span class="p">.</span><span class="n">Site</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">comments</span><span class="p">.</span><span class="n">enabled</span> <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="err">=&#34;</span><span class="nc">comment</span><span class="s">&#34;&gt;&lt;/div&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结合giscus文件，layouts/partials/comments/provider/giscus.html 添加以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">{{</span><span class="o">-</span> <span class="n">with</span> <span class="p">.</span><span class="n">Site</span><span class="p">.</span><span class="n">Params</span><span class="p">.</span><span class="n">comments</span><span class="p">.</span><span class="n">giscus</span> <span class="o">-</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="err">=&#34;</span><span class="nc">js</span><span class="o">-</span><span class="n">Pjax</span><span class="s">&#34;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 判断当前是否有文章评论标识
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">let</span> <span class="n">comment</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s">&#34;.comment&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">comment</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">let</span> <span class="n">script</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">createElement</span><span class="p">(</span><span class="err">&#39;</span><span class="n">script</span><span class="err">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 将对应评论的脚本内容填进去
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">script</span><span class="p">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="err">&#39;</span><span class="n">src</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="nl">https</span><span class="p">:</span><span class="c1">//giscus.app/client.js&#39;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">script</span><span class="p">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="err">&#39;</span><span class="n">data</span><span class="o">-</span><span class="n">repo</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="p">{{</span><span class="o">-</span> <span class="p">.</span><span class="n">repo</span> <span class="o">-</span><span class="p">}}</span><span class="err">&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...以此类推
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">script</span><span class="p">.</span><span class="n">async</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 寻找合适的元素，添加脚本进去(在页脚前将评论脚本插入)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">document</span><span class="p">.</span><span class="n">querySelector</span><span class="p">(</span><span class="err">&#39;</span><span class="p">.</span><span class="n">site</span><span class="o">-</span><span class="n">footer</span><span class="err">&#39;</span><span class="p">).</span><span class="n">before</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})(</span><span class="n">document</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{{</span><span class="o">-</span> <span class="n">end</span> <span class="o">-</span><span class="p">}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在layouts/partials/footer/custom.html，引入以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">var</span> <span class="n">pjax</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pjax</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">selectors</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">...</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;.js-Pjax&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="github-部署">github 部署
+</h2><p>创建仓库，名为 自己用户名.github.io</p>
+<p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image5.png"
+	width="1149"
+	height="858"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image5_hu_298944de959e788e.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image5_hu_21f04a8c92f3c620.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="321px"
+	
+></p>
+<p><img src="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image6.png"
+	width="1184"
+	height="784"
+	srcset="/p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image6_hu_b8952723450f6589.png 480w, /p/%E5%AF%92%E6%B1%9F%E9%9B%AA%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image6_hu_19b9121ed80b6c82.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="362px"
+	
+></p>
+<p>生成 token，在用户的 setting-&gt;Developer Settings-&gt;<code>Personal access tokens</code>，创建一个token(classic)</p>
+<p>token选择永不过期，并勾选 repo 和 workflow 选项</p>
+<p>为保证安全，将生成的token，保存的仓库的变量中，前往 项目的<code>Settings -&gt; Secrets and variables -&gt; Actions</code>中设置，配置环境变量</p>
+<p>创建一个.github/workflows/xxxx.yaml`文件，将以下内容复制进去，想具体了解更多，可查看【<a class="link" href="https://docs.github.com/zh/actions"  target="_blank" rel="noopener"
+    >Github Action文档</a>】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">name: deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 代码提交到main分支时触发github action
+</span></span><span class="line"><span class="cl">on:
+</span></span><span class="line"><span class="cl">  push:
+</span></span><span class="line"><span class="cl">    branches:
+</span></span><span class="line"><span class="cl">      - main
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jobs:
+</span></span><span class="line"><span class="cl">  deploy:
+</span></span><span class="line"><span class="cl">    runs-on: ubuntu-latest
+</span></span><span class="line"><span class="cl">    steps:
+</span></span><span class="line"><span class="cl">        - name: Checkout
+</span></span><span class="line"><span class="cl">          uses: actions/checkout@v4
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              fetch-depth: 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Setup Hugo
+</span></span><span class="line"><span class="cl">          uses: peaceiris/actions-hugo@v3
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              hugo-version: &#34;latest&#34;
+</span></span><span class="line"><span class="cl">              extended: true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Build Web
+</span></span><span class="line"><span class="cl">          run: hugo -D
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        - name: Deploy Web
+</span></span><span class="line"><span class="cl">          uses: peaceiris/actions-gh-pages@v4
+</span></span><span class="line"><span class="cl">          with:
+</span></span><span class="line"><span class="cl">              PERSONAL_TOKEN: ${{ secrets.你的token变量名 }}
+</span></span><span class="line"><span class="cl">              EXTERNAL_REPOSITORY: 你的github名/你的仓库名
+</span></span><span class="line"><span class="cl">              PUBLISH_BRANCH: main
+</span></span><span class="line"><span class="cl">              PUBLISH_DIR: ./public
+</span></span><span class="line"><span class="cl">              commit_message: auto deploy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>建.gitignore`文件，来避免提交不必要的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl"># 自动生成的文件
+</span></span><span class="line"><span class="cl">public
+</span></span><span class="line"><span class="cl">resources
+</span></span><span class="line"><span class="cl">.hugo_build.lock
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># hugo命令
+</span></span><span class="line"><span class="cl">hugo.exe
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看仓库，Action</p>
+<h2 id="搭建图床">搭建图床
+</h2><h3 id="picgo">picgo
+</h3><h4 id="picgo的下载">picgo的下载
+</h4><p>首先在浏览器内直接搜索picgo</p>
+<p><a class="link" href="https://github.com/Molunerfinn/PicGo/releases"  target="_blank" rel="noopener"
+    >GitHub下载链接</a></p>
+<h4 id="picgo的配置">picgo的配置
+</h4><p>插件设置搜索 bilibil 或 <a class="link" href="https://github.com/xlzy520/picgo-plugin-bilibili"  target="_blank" rel="noopener"
+    >bilibili github 地址</a></p>
+<p>点击安装，依赖，需要提前安装 <a class="link" href="https://nodejs.org/zh-cn/download"  target="_blank" rel="noopener"
+    >nodejs</a></p>
+<p>登录 b 站 f12 获取以下值</p>
+<p><img src="/bilibili.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="bilibili获取值"
+	
+	
+></p>
+<p>将SESSDATA复制到picgo的SESSDATA中；将bili_jct复制到picgo的csrf中</p>
+<p><img src="/bilibili2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="bilibili配置值"
+	
+	
+></p>
+<p>配置默认远程服务</p>
+<p><img src="/bilibili3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="bilibilidefault"
+	
+	
+></p>
+<h3 id="typora">typora
+</h3><p><img src="https://i0.hdslb.com/bfs/openplatform/19b66c851035a1037a48ed05e468e01680973e2f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="typora 配置"
+	
+	
+></p>
+<h2 id="文本用法">文本用法
+</h2><p>引入外部内容</p>
+<p>学如逆水行舟，不进则退。</p>
+<!-- more -->
+
+
+
+
+
+
+
+    
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cstddef&gt;</span><span class="cp">  </span><span class="c1">// 用于size_t
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp">  </span><span class="c1">// 用于异常处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Array</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 迭代器类型定义（模仿vector的迭代器行为）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">const_iterator</span> <span class="o">=</span> <span class="k">const</span> <span class="n">T</span><span class="o">*</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 默认构造函数：初始容量为1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Array</span><span class="p">()</span> <span class="o">:</span> <span class="n">_data</span><span class="p">(</span><span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">_size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_cap</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 带初始容量的构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">explicit</span> <span class="nf">Array</span><span class="p">(</span><span class="n">size_t</span> <span class="n">cap</span><span class="p">)</span> <span class="o">:</span> <span class="n">_cap</span><span class="p">(</span><span class="n">cap</span><span class="p">),</span> <span class="n">_size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">cap</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s">&#34;Capacity cannot be zero&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">cap</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 拷贝构造函数（深拷贝，避免浅拷贝问题）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Array</span><span class="p">(</span><span class="k">const</span> <span class="n">Array</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="o">:</span> <span class="n">_size</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_size</span><span class="p">),</span> <span class="n">_cap</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_cap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">_cap</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 赋值运算符重载（深拷贝）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Array</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Array</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">other</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 避免自赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">delete</span><span class="p">[]</span> <span class="n">_data</span><span class="p">;</span>    <span class="c1">// 释放原有资源
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">_size</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_cap</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">_cap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">_cap</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 析构函数：释放动态内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">~</span><span class="n">Array</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span><span class="p">[]</span> <span class="n">_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_data</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>  <span class="c1">// 避免野指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取元素个数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">size_t</span> <span class="nf">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_size</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取容量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">size_t</span> <span class="nf">capacity</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_cap</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 判断是否为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">bool</span> <span class="nf">empty</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 尾插元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">push_back</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">_size</span> <span class="o">&gt;=</span> <span class="n">_cap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">reserve</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_cap</span><span class="p">);</span>  <span class="c1">// 容量不足时扩容为原来的2倍
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_data</span><span class="p">[</span><span class="n">_size</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 尾删元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">pop_back</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Array is empty, cannot pop back&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">_size</span><span class="p">;</span>  <span class="c1">// 逻辑删除（对于基础类型足够，复杂类型需调用析构）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 访问指定索引元素（带越界检查）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">T</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">_size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Index out of range&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">_size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Index out of range&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_data</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 预留容量（仅扩容，不改变元素个数）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">reserve</span><span class="p">(</span><span class="n">size_t</span> <span class="n">new_cap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">new_cap</span> <span class="o">&lt;=</span> <span class="n">_cap</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>  <span class="c1">// 新容量小于等于当前容量则不操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">T</span><span class="o">*</span> <span class="n">new_data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">new_cap</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">new_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span><span class="p">[]</span> <span class="n">_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_data</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_cap</span> <span class="o">=</span> <span class="n">new_cap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 调整元素个数（可缩小或扩容，扩容时用默认值填充）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">resize</span><span class="p">(</span><span class="n">size_t</span> <span class="n">new_size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">new_size</span> <span class="o">&gt;</span> <span class="n">_cap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">reserve</span><span class="p">(</span><span class="n">new_size</span><span class="p">);</span>  <span class="c1">// 容量不足则扩容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_size</span> <span class="o">=</span> <span class="n">new_size</span><span class="p">;</span>  <span class="c1">// 直接调整大小（缩小为逻辑删除，扩容为默认值填充）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 插入元素到指定位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">iterator</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="n">begin</span><span class="p">()</span> <span class="o">||</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Insert position out of range&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">_size</span> <span class="o">&gt;=</span> <span class="n">_cap</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">reserve</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">_cap</span><span class="p">);</span>  <span class="c1">// 扩容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">pos</span> <span class="o">=</span> <span class="n">_data</span> <span class="o">+</span> <span class="p">(</span><span class="n">pos</span> <span class="o">-</span> <span class="n">begin</span><span class="p">());</span>  <span class="c1">// 扩容后迭代器失效，重新计算位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 从插入位置开始后移元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">end</span><span class="p">();</span> <span class="n">it</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">;</span> <span class="o">--</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="o">*</span><span class="n">it</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">it</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">pos</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">++</span><span class="n">_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 删除指定位置元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">erase</span><span class="p">(</span><span class="n">iterator</span> <span class="n">pos</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="n">begin</span><span class="p">()</span> <span class="o">||</span> <span class="n">pos</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Erase position out of range&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 从删除位置后一个元素开始前移
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">pos</span><span class="p">;</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="o">*</span><span class="n">it</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">it</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">_size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 迭代器相关函数（模仿vector的迭代器接口）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">iterator</span> <span class="nf">begin</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_data</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">iterator</span> <span class="nf">end</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_data</span> <span class="o">+</span> <span class="n">_size</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">const_iterator</span> <span class="nf">begin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_data</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">const_iterator</span> <span class="nf">end</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_data</span> <span class="o">+</span> <span class="n">_size</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">T</span><span class="o">*</span> <span class="n">_data</span><span class="p">;</span>       <span class="c1">// 存储元素的动态数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">size_t</span> <span class="n">_size</span><span class="p">;</span>   <span class="c1">// 当前元素个数（使用size_t更符合容器设计习惯）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">size_t</span> <span class="n">_cap</span><span class="p">;</span>    <span class="c1">// 容量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 测试函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试构造和push_back
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Array</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Size: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, Capacity: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>  <span class="c1">// 3,4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试访问元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>  <span class="c1">// 10 20 30
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试迭代器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">arr</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>  <span class="c1">// 10 20 30
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试插入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">arr</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;After insert: &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">val</span> <span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 范围for循环依赖迭代器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>  <span class="c1">// 10 15 20 30
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试删除
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">arr</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;After erase: &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">val</span> <span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>  <span class="c1">// 10 15 30
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 测试拷贝构造
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Array</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr2</span> <span class="o">=</span> <span class="n">arr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arr2</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;arr2: &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">val</span> <span class="p">:</span> <span class="n">arr2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>  <span class="c1">// 10 15 30 40
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Error: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+<p>短代码支持语雀导出得图片链接</p>
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    <img src="/image_7066816797853088096.png" alt="终端启动" >
+
+
+<p>短代码支持 github 中代码文件引用</p>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Copyright 2024 The Hugo Authors. All rights reserved.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// you may not use this file except in compliance with the License.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// You may obtain a copy of the License at</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// http://www.apache.org/licenses/LICENSE-2.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Unless required by applicable law or agreed to in writing, software</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// See the License for the specific language governing permissions and</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// limitations under the License.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;log&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;os&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;github.com/gohugoio/hugo/commands&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">log</span><span class="p">.</span><span class="nf">SetFlags</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">commands</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Error: %s&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// -*- mode:C++; tab-width:8; c-basic-offset:2; indent-tabs-mode:nil -*-
+</span></span></span><span class="line"><span class="cl"><span class="c1">// vim: ts=8 sw=2 sts=2 expandtab ft=cpp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Ceph - scalable distributed file system
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Copyright (C) 2022 New Dream Network
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * This is free software; you can redistribute it and/or
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * modify it under the terms of the GNU Lesser General Public
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * License version 2.1, as published by the Free Software
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Foundation.  See file COPYING.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;chrono&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;include/rados/librgw.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;include/str_list.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;common/ceph_argparse.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;common/ceph_context.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;common/dout.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;rgw_lib.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define dout_subsys ceph_subsys_rgw
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">rgw</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">global_stop</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">librgw_mtx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">RGWLib</span> <span class="n">rgwlib</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace rgw
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">librgw_create</span><span class="p">(</span><span class="n">librgw_t</span><span class="o">*</span> <span class="n">rgw</span><span class="p">,</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="k">namespace</span> <span class="n">rgw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">rc</span> <span class="o">=</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">g_rgwlib</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">rgwlib</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">g_ceph_context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">lg</span><span class="p">(</span><span class="n">librgw_mtx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">g_ceph_context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">spl_args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// last non-0 argument will be split and consumed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">spl_arg</span><span class="p">{</span><span class="n">argv</span><span class="p">[(</span><span class="o">--</span><span class="n">argc</span><span class="p">)]};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">get_str_vec</span><span class="p">(</span><span class="n">spl_arg</span><span class="p">,</span> <span class="s">&#34; </span><span class="se">\t</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">spl_args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">auto</span> <span class="n">args</span> <span class="o">=</span> <span class="n">argv_to_vec</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// append split args, if any
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">elt</span> <span class="p">:</span> <span class="n">spl_args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">args</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">elt</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">rc</span> <span class="o">=</span> <span class="n">rgwlib</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">rgw</span> <span class="o">=</span> <span class="n">g_ceph_context</span><span class="o">-&gt;</span><span class="n">get</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">rc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">librgw_shutdown</span><span class="p">(</span><span class="n">librgw_t</span> <span class="n">rgw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="k">namespace</span> <span class="n">rgw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">CephContext</span><span class="o">*</span> <span class="n">cct</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">CephContext</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">rgw</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rgwlib</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">dout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;final shutdown&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dendl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">cct</span><span class="o">-&gt;</span><span class="n">put</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="cm">/* extern &#34;C&#34; */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    
+
+<p>关于 <code>github.com</code> 和 <code>raw.githubusercontent.com</code> 区别的比较：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">特性</th>
+          <th style="text-align: left"><code>github.com</code></th>
+          <th style="text-align: left"><code>raw.githubusercontent.com</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>主要目的</strong></td>
+          <td style="text-align: left">提供 <strong>Web 界面、用户界面和代码仓库管理</strong>。</td>
+          <td style="text-align: left">提供 <strong>原始、未经处理的文件内容</strong>（Raw Content）。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>返回内容</strong></td>
+          <td style="text-align: left"><strong>HTML 页面</strong>（包含导航栏、按钮、评论等）。</td>
+          <td style="text-align: left"><strong>文件的纯文本</strong>（或二进制）内容，没有 HTML 包装。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Content-Type</strong></td>
+          <td style="text-align: left"><code>text/html</code></td>
+          <td style="text-align: left">通常是 <code>text/plain</code> 或文件对应的 Mime-Type。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型 URL 路径</strong></td>
+          <td style="text-align: left"><code>.../user/repo/blob/main/file.go</code></td>
+          <td style="text-align: left"><code>.../user/repo/main/file.go</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>使用场景</strong></td>
+          <td style="text-align: left">人类用户通过浏览器进行代码审查、提交、Issue 跟踪等操作。</td>
+          <td style="text-align: left">机器或程序（如 Hugo、脚本）需要下载、读取、或直接使用文件内容。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>文件加载</strong></td>
+          <td style="text-align: left">文件内容被嵌入到网页的 HTML 结构中。</td>
+          <td style="text-align: left">文件内容作为独立的数据流直接传输。</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>引入外部链接</p>
+<a href="/zh/search/" title="搜索" target="_blank">搜索</a>
+
+<h2 id="reference">Reference
+</h2><p><a class="link" href="https://www.bilibili.com/video/BV1bovfeaEtQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=3cc5c63659274d24dd07e99dc80bc98d"  target="_blank" rel="noopener"
+    >https://www.bilibili.com/video/BV1bovfeaEtQ?spm_id_from=333.788.videopod.episodes&amp;vd_source=3cc5c63659274d24dd07e99dc80bc98d</a></p>
+<p><a class="link" href="https://letere-gzj.github.io/hugo-stack/p/hugo/custom-blog/"  target="_blank" rel="noopener"
+    >https://letere-gzj.github.io/hugo-stack/p/hugo/custom-blog/</a></p>
+<p><a class="link" href="https://huxinme.top/posts/blog/hugo-blog/"  target="_blank" rel="noopener"
+    >https://huxinme.top/posts/blog/hugo-blog/</a></p>
+<p><a class="link" href="https://the-oone.github.io/p/github-pages-hugo-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"  target="_blank" rel="noopener"
+    >https://the-oone.github.io/p/github-pages-hugo-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></p>
+<p><a class="link" href="https://www.github-zh.com/getting-started/github-pages"  target="_blank" rel="noopener"
+    >https://www.github-zh.com/getting-started/github-pages</a></p>
+<p><a class="link" href="https://ainfinitythecoder.cn/zh/posts/wondering/setup-a-personal-blog/"  target="_blank" rel="noopener"
+    >https://ainfinitythecoder.cn/zh/posts/wondering/setup-a-personal-blog/</a></p>
+<p><a class="link" href="https://blog.jaxiu.cn/blog/2025-07/%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E4%BD%BF%E7%94%A8-hugo-%E5%92%8C-github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"  target="_blank" rel="noopener"
+    >https://blog.jaxiu.cn/blog/2025-07/%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E4%BD%BF%E7%94%A8-hugo-%E5%92%8C-github-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></p>
+<p><a class="link" href="https://gohugo.io/documentation/"  target="_blank" rel="noopener"
+    >https://gohugo.io/documentation/</a></p>
+<p><a class="link" href="https://letere-gzj.github.io/hugo-stack/p/hugo/custom-stack-theme/#2-%E4%BF%AE%E6%94%B9%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8F"  target="_blank" rel="noopener"
+    >https://letere-gzj.github.io/hugo-stack/p/hugo/custom-stack-theme/#2-%E4%BF%AE%E6%94%B9%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8F</a></p>
+<p><a class="link" href="https://letere-gzj.github.io/hugo-stack/archives/"  target="_blank" rel="noopener"
+    >https://letere-gzj.github.io/hugo-stack/archives/</a></p>
+<p><a class="link" href="https://github.com/JanePHPDev/TurboFeLy"  target="_blank" rel="noopener"
+    >https://github.com/JanePHPDev/TurboFeLy</a> 替代 pjax</p>
+<p><a class="link" href="https://www.heyjude.blog/zh-cn/posts/giscus-comments-hugo/"  target="_blank" rel="noopener"
+    >https://www.heyjude.blog/zh-cn/posts/giscus-comments-hugo/</a></p>
+<p><a class="link" href="https://www.cnblogs.com/AxonoSensei/p/19052814"  target="_blank" rel="noopener"
+    >https://www.cnblogs.com/AxonoSensei/p/19052814</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+<div class="math-katex"></div>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script src="https://giscus.app/client.js"
+        data-repo="cold-rivers-snow/cold-rivers-snow.github.io"
+        data-repo-id="R_kgDOQFRAmg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOQFRAms4Cw3NC"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+<div class="js-Pjax">
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function() {
+           
+           let comment = document.querySelector(".comment");
+           if (!comment) {
+              return
+           }
+            let script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('data-repo', 'cold-rivers-snow/cold-rivers-snow.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDOQFRAmg');
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDOQFRAms4Cw3NC');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', 'preferred_color_scheme');
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.setAttribute('data-loading', 'lazy');
+            script.async = true;
+            document.querySelector('.site-footer').appendchild(script)
+            
+            (function () {
+                addEventListener("message", (e) => {
+                   if (event.origin !== "https://giscus.app") return;
+                    handler();
+                });
+                window.addEventListener("onColorSchemeChange", handler);
+
+                function handler() {
+                    if (document.documentElement.dataset.scheme === "light") {
+                        setGiscusTheme('light');
+                    } else {
+                        setGiscusTheme('dark_dimmed');
+                    }
+                }
+            })();
+        })(document)
+</script>
+</div>
+    <div class="comment"></div>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 山重水复疑无路，柳暗花明又一村
+    </section>
+    
+    <section class="powerby">
+        
+            山重水复疑无路，柳暗花明又一村 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.99ce1801c4bad426a42fc436add4721e149159dbb598636e9578fd59cf778c83.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: 'ChillKai';
+    src: url(https://cold-rivers-snow.github.io/font/ChillKai.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: 'ChillKai';
+    --code-font-family: 'ChillKai';
+  }
+
+  #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://cold-rivers-snow.github.io/icons/backtop.svg);
+    }
+</style>
+
+<script>
+    
+
+    function initScrollTop() {
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (!rightSideBar) {
+            return;
+        }
+        
+        let btn = document.createElement("div");
+        btn.id = "backTopBtn";
+        btn.onclick = backToTop
+        rightSideBar.appendChild(btn)
+        
+        window.onscroll = function() {
+            
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    }
+
+    
+
+    function backToTop(){
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+
+    initScrollTop();
+</script>
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = "https://cold-rivers-snow.github.io/icons/codeMore.png"
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<div id="aplayer"></div>
+<script>
+    const staticDir = "https://cold-rivers-snow.github.io/"+ 'music/';
+    const songs = [
+        'DreamIsPossible-Delacey',
+        '匆匆那年-王菲',
+        '十年-陈奕迅',
+        '一生所爱-卢冠廷',
+    ];
+    let audios = [];
+    songs.forEach((item) => {
+      	const songInfo = item.split('-');
+	      audios.push({
+	        	name: songInfo[0],
+	        	artist: songInfo[1],
+	        	url: staticDir + item + '/song.mp3',
+	        	cover: staticDir + item + '/cover.jpg',
+	        	lrc: staticDir + item + '/lyric.lrc'
+	      });
+    })
+    const ap = new APlayer({
+		    container: document.getElementById('aplayer'),
+            lrcType: 3,
+		    fixed: true,
+		    listMaxHeight: '150px',
+        audio: audios
+    });
+
+    
+
+		window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+
+    
+    <script src=https://cold-rivers-snow.github.io/js/topbar.min.js></script>
+
+
+
+<script>
+	var pjax = new Pjax({
+	  selectors: [
+	    ".main-container",
+        ".js-Pjax"
+	  ]
+	})
+
+    pjax._handleResponse = pjax.handleResponse;
+    pjax.handleResponse = function(responseText, request, href, options) {
+        if (request.responseText.match("<html")) {
+            if (responseText) {
+                
+                let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+                
+                let bodyClass = newDom.body.className;
+                document.body.setAttribute("class", bodyClass)
+                
+                pjax._handleResponse(responseText, request, href, options);
+            }
+        } else {
+            
+        }
+    }
+
+    
+    topbar.config({
+        barColors: {
+            '0': 'rgba(255,  255, 255, 1)', 
+            '1.0': 'rgba(0, 149, 234,  1)' 
+        }
+    })
+	
+    document.addEventListener('pjax:send', () => {
+        
+        topbar.show();
+    })
+    document.addEventListener('pjax:complete', () => {
+        
+        window.Stack.init();
+        
+        topbar.hide();
+    })
+</script>
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    
+    showHideView();
+    document.addEventListener('pjax:complete', () => {
+      const existingScript = document.querySelector('script[src="https://cn.vercount.one/js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      const busuanziScript = document.createElement('script');
+      busuanziScript.src = 'https://cn.vercount.one/js';
+      busuanziScript.async = true;
+      document.body.appendChild(busuanziScript);
+      showHideView();
+    });
+</script>
+
+<script>
+    async function renderKaTeX() {
+        
+        let katex = document.querySelector(".math-katex");
+        if (!katex) {
+            return;
+        }
+        
+        while (typeof renderMathInElement !== 'function') {
+            await delay(500);
+        }        
+        
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });
+    }
+    
+    
+
+    function delay(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+
+    document.addEventListener('pjax:complete', () => {
+        renderKaTeX();
+    })
+</script>
+
+<script>
+    async function renderdetails() {
+        
+        let details = document.querySelector(".article-details");
+        if (!details) {
+            return;
+        }
+        
+        while (typeof renderMathInElement !== 'function') {
+            await delay(500);
+        }        
+        
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });
+    }
+    
+    
+
+    function delay(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+
+    document.addEventListener('pjax:complete', () => {
+        renderdetails();
+    })
+</script>
+
+
+    </body>
+</html>

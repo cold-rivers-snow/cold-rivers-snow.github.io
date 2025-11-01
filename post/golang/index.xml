@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>📚 brpc 学习笔记 on 寒江雪的博客</title>
+        <link>https://cold-rivers-snow.github.io/post/golang/</link>
+        <description>Recent content in 📚 brpc 学习笔记 on 寒江雪的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>山重水复疑无路，柳暗花明又一村</copyright>
+        <lastBuildDate>Mon, 27 Oct 2025 09:04:14 +0800</lastBuildDate><atom:link href="https://cold-rivers-snow.github.io/post/golang/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>golang</title>
+        <link>https://cold-rivers-snow.github.io/p/golang/</link>
+        <pubDate>Mon, 27 Oct 2025 09:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/p/golang/</guid>
+        <description>&lt;h2 id=&#34;reference&#34;&gt;Reference
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chai2010.cn/advanced-go-programming-book/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://chai2010.cn/advanced-go-programming-book/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="muduo 文章阅读">
+<title>04C&#43;&#43;多线程系统编程精要</title>
+
+<link rel='canonical' href='https://cold-rivers-snow.github.io/p/04c-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%B2%BE%E8%A6%81/'>
+
+<link rel="stylesheet" href="/scss/style.min.1094951ff26ff20f87a78f7b56d51913e47786ecfa19c41f35a0d4979ad300e0.css"><meta property='og:title' content="04C++多线程系统编程精要">
+<meta property='og:description' content="muduo 文章阅读">
+<meta property='og:url' content='https://cold-rivers-snow.github.io/p/04c-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%B2%BE%E8%A6%81/'>
+<meta property='og:site_name' content='寒江雪的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-31T21:28:14&#43;08:00'/><meta property='article:modified_time' content='2025-10-31T21:28:14&#43;08:00'/>
+<meta name="twitter:title" content="04C++多线程系统编程精要">
+<meta name="twitter:description" content="muduo 文章阅读">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_e004598c542ead32.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">⚽</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">寒江雪的博客</a></h1>
+            <h2 class="site-description">山重水复疑无路，柳暗花明又一村</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/cold-rivers-snow/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.zhihu.com/people/xue-shang-shuang'
+                        target="_blank"
+                        title="zhihu"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-zhihu"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 6h6v12h-2l-2 2l-1 -2h-1z" /><path d="M4 12h6.5" /><path d="M10.5 6h-5" /><path d="M6 4c-.5 2.5 -1.5 3.5 -2.5 4.5" /><path d="M8 6v7c0 4.5 -2 5.5 -4 7" /><path d="M11 18l-3 -5" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://open.weixin.qq.com/qr/code?username=gh_019a337e33bf'
+                        target="_blank"
+                        title="公众号"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-wechat"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z" /><path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233" /><path d="M10 8h.01" /><path d="M7 8h.01" /><path d="M15 14h.01" /><path d="M18 14h.01" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%AC%E5%91%8A/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-flag-share"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M13.13 14.833a5.002 5.002 0 0 1 -1.13 -.833a5 5 0 0 0 -7 0v-9a5 5 0 0 1 7 0a5 5 0 0 0 7 0v8" /><path d="M5 21v-7" /><path d="M16 22l5 -5" /><path d="M21 21.5v-4.5h-4.5" /></svg>
+                
+                <span>公告</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#基本线程原语的选用">基本线程原语的选用</a></li>
+    <li><a href="#cc-系统库的线程安全性">C/C++ 系统库的线程安全性</a></li>
+    <li><a href="#linux-上的线程标识">Linux 上的线程标识</a></li>
+    <li><a href="#线程的创建与销毁守则">线程的创建与销毁守则</a>
+      <ol>
+        <li><a href="#pthread_cancel-与-c">pthread_cancel 与 C++</a></li>
+        <li><a href="#exie3-在-c-中不是线程安全的">exie(3) 在 C++ 中不是线程安全的</a></li>
+      </ol>
+    </li>
+    <li><a href="#善用-__thread-关键字">善用 __thread 关键字</a></li>
+    <li><a href="#多线程与-io">多线程与 IO</a></li>
+    <li><a href="#用-raii-包装文件描述符">用 RAII 包装文件描述符</a></li>
+    <li><a href="#raii-与-fork">RAII 与 fork()</a></li>
+    <li><a href="#多线程与-fork">多线程与 fork()</a></li>
+    <li><a href="#多线程与-signal">多线程与 signal</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/muduo/" >
+                Muduo
+            </a>
+        
+            <a href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" >
+                多线程
+            </a>
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+            <a href="/categories/c&#43;&#43;/" >
+                C&#43;&#43;
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/04c-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E7%B2%BE%E8%A6%81/">04C&#43;&#43;多线程系统编程精要</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published">2025-10-31</time>
+                </div>
+            
+
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-10-31 21:28:14 &#43;0800 &#43;0800" title="2025-10-31 21:28:14 &#43;0800 &#43;0800">
+                            2025-10-31
+                        </time>
+
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                    <time class="article-time--reading">
+                        阅读时长: 7 分钟
+                    </time>
+                </div>
+                
+                <div id="viewCount">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                    <time class="article-time--reading">
+                        
+                        <span id="vercount_value_page_pv">loading... </span>次
+                    </time>
+                </div>
+            
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>思维方式转变两点：</p>
+<ul>
+<li>当前线程随时可能会被切换出去，或者被抢占。</li>
+<li>多线程程序中事件的发生顺序不再有全局统一的先后关系。</li>
+</ul>
+<h2 id="基本线程原语的选用">基本线程原语的选用
+</h2><p>Linux 平台 11 个最基本的 Pthreads 函数：</p>
+<p>2个：线程的创建和等待结束（join）。封装为 muduo::Thread
+4个：mutex 的创建、销毁、加锁、解锁。封装为 muduo::MutexLock
+5个：条件变量的创建、销毁、等待、通知、广播。封装为 muduo::Condition</p>
+<p>可以酌情使用的：</p>
+<ul>
+<li>pthread_once. 封装为 muduo::Singleton<T> 。其实不如直接用全局变量</li>
+<li>pthread_key* ,封装为 muduo::ThreadLocal<T>。可以考虑用 __thread 替换之。</li>
+</ul>
+<p>不建议使用的：</p>
+<ul>
+<li>pthread_rwlock， 读写锁通常应慎用。</li>
+<li>sem_*, 避免使用信号量（semaphore）。它的功能与条件变量重合，但容易出错。</li>
+<li>pthread_{cancel,kill}。程序出现他们，通常意味设计出了问题</li>
+</ul>
+<h2 id="cc-系统库的线程安全性">C/C++ 系统库的线程安全性
+</h2><p>对于标准而言，关键的不是定义线程库，而是规定内存模型（memory model）。特别是规定一个线程对某个共享变量的修改何时能被其他线程看到，这称为内存序（memory ordering）或者内存能见度（memory visibility）。</p>
+<p>C/C++ 标准库中绝大多数泛型算法是线程安全的。</p>
+<h2 id="linux-上的线程标识">Linux 上的线程标识
+</h2><p>pthread_t 不能作为线程标识，同一个进程先后不同的线程 pthread_t 可能相同</p>
+<p>建议使用 gettid(2) 系统调用的返回值作为线程 id。好处：</p>
+<ul>
+<li>类型 pid_t, 通常是小整数，便于日志输出。最大值是 /proc/sys/kernel/pid_max 默认 32768</li>
+<li>直接标识内核的任务调度 id，因此 /proc 文件系统中可以找到对应项。 /proc/tid 或 /proc/pid/task/tid.</li>
+<li>使用其他工具 top 等也能查看</li>
+<li>任何时刻全局唯一。Linux 分配新 pid 采用递增轮回办法，短时间内启动的多个线程也会具有不同的线程 id</li>
+<li>0 是非法值，因此操作系统的第一个进程 init 的 pid 是 1</li>
+</ul>
+<p>线程数目可以从 /proc/pid/status 拿到</p>
+<p>gettid(2) 为系统调用，每次都系统调用比较浪费， muduo::CurrentThread::tid() 采用 __thread 变量缓存，只有在线程第一次调用的时候才会系统调用。以后直接从 thread local 缓存线程 id 拿结果（可参考 glib）。</p>
+<p>fork(2) 子进程看到 stale 缓存，通过 pthread_atfork() 注册一个回调，情况缓存id</p>
+<h2 id="线程的创建与销毁守则">线程的创建与销毁守则
+</h2><ul>
+<li>程序库不应该在未提取告知的情况下创建自己的 “背景线程”</li>
+<li>尽量用相同的方式创建线程</li>
+<li>进入 main 函数之前不应该启动线程</li>
+<li>程序中线程的创建最好能在初始化阶段全部完成。</li>
+</ul>
+<p>C++ 保证在进入 main() 函数之前完成全局对象（包括 namespace 级全局对象、文件级静态对象、class 的静态对象，但不包括函数内的静态对象）的构造</p>
+<p>线程的销毁方式：</p>
+<ul>
+<li>自然死亡：从线程主函数返回，线程正常退出。</li>
+<li>非自然死亡：从线程主函数抛出异常或线程触发 segfault 信号等非法操作</li>
+<li>自杀：在线程中调用 pthread_exit() 来立刻退出线程</li>
+<li>他杀：其他线程调用 pthread_cancel() 来强制终止某个线程</li>
+</ul>
+<h3 id="pthread_cancel-与-c">pthread_cancel 与 C++
+</h3><p>pthread_cancel 意思是线程执行到这里有可能被终止</p>
+<p>在 C++ 中，线程不是执行到此函数立刻终止，而是该函数抛出异常，这样可以有机会执行 stack  unwind,析构栈上对象（特别是释放持有的锁）</p>
+<h3 id="exie3-在-c-中不是线程安全的">exie(3) 在 C++ 中不是线程安全的
+</h3><p>exit(3) 函数在 C++ 中的作用除了终止进程，还会析构全局对象和已经构造完的函数静态对象，有潜在死锁可能。</p>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../Mutex.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">muduo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">someFunctionMayCallExit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GlobalObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">doit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MutexLockGuard</span> <span class="nf">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">someFunctionMayCallExit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">~</span><span class="n">GlobalObject</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;GlobalObject:~GlobalObject</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MutexLockGuard</span> <span class="nf">g</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// clean up
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;GlobalObject:~GlobalObject cleanning</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">MutexLock</span> <span class="n">mutex_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">GlobalObject</span> <span class="n">g_obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">g_obj</span><span class="p">.</span><span class="n">doit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    
+
+<p>如果必须退出，可以考虑 _exit(2) 系统调用，它不会试图析构全局对象，但是也不会执行其他任何清理工作。</p>
+<h2 id="善用-__thread-关键字">善用 __thread 关键字
+</h2><p>__thread 是 gcc 内置的线程局部存储设施。</p>
+<p>__thread 只能用于修饰 POD 类型，不能修饰 class 类型，因为无法自动调用构造析构函数。</p>
+<p>__thread 可以用于修饰全局变量、函数内的静态变量，但是不能用于修饰函数的局部变量或者 class 的普通成员变量。</p>
+<p>__thread 变量的初始化只能用编译期常量。</p>
+<p>__thread 变量是每个线程有一份独立实体，各个线程的变量值互不干扰。还可以修饰那些 “值可能会变，带有全局性，但是又不值得用全局锁保护” 的变量。</p>
+<h2 id="多线程与-io">多线程与 IO
+</h2><p>一个文件只由一个进程中的一个线程来读写，显然正确，多个线程操作同一块磁盘，在内核中也会排队。</p>
+<p>多线程遵守的原则：每个文件描述符只由一个线程操作，从而轻松解决消息收发的顺序性问题，也避免了关闭文件描述符的各种race condition。一个线程可以操作多个文件描述符，但一个线程不能操作别的线程拥有的文件描述符。</p>
+<p>对于磁盘文件，必要的时候多个线程可以同时调用 pread(2)/pwrite(2) 来读写同一个文件；对于 UDP,由于协议本身保证消息的原子性，在适当的条件下（比如消息之间彼此独立）可以多个线程同时读写同一个 UDP 文件描述符。</p>
+<h2 id="用-raii-包装文件描述符">用 RAII 包装文件描述符
+</h2><p>Linux 的文件描述符是小整数，程序刚刚启动的时候，0 是标准输入，1 是标准输出，2 是标准错误。这时新打开的文件描述符会是 3，因为 POSIX 标准要求每次打开文件（含 socket）的时候必须使用当前最小科研的文件描述符号码。</p>
+<p>RAII，用 Socket 对象包装文件描述符，所有对此文件的描述符的读写操作都通过此对象进行，在对象的析构函数中关闭文件描述符。这样，只要 Socket 对象活着，就不会有其他 Socket 对象跟它一样的文件描述符。</p>
+<p>为什么服务端程序不应该关闭标准输出和标准错误？因为第三方库在特殊紧急情况下会往 stdout 或 stderr 打印出错信息，如果我没程序关闭了标准输出和标准错误，这两个文件描述符有可能被网络连接占用，结果造成对方收到莫名奇妙的数据。正确做法是把 stdout 或 stderr 重定向到磁盘文件（最好不要 /dev/null），这样不至于丢失关键信息。当然这些应该由启动服务程序的看门狗进程完成（参考 <a class="link" href="http://github.com/chenshuo/muduo-protorpc"  target="_blank" rel="noopener"
+    >http://github.com/chenshuo/muduo-protorpc</a> 的 Zurg slave 示例）。对服务程序本身是透明的。</p>
+<h2 id="raii-与-fork">RAII 与 fork()
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Foo</span> <span class="n">foo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fork</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">foo</span><span class="p">.</span><span class="n">doit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果 Foo class 封装了某个资源，而这个资源没有被子进程继承，doit() 后子进程中错乱的。</p>
+<p>fork() 后，子进程继承父进程的几乎全部状态，但是有些例外。子进程会继承地址空间和文件描述符，因此管理动态内存和文件描述符用 RAII 即可。但是子进程不会继承：</p>
+<ul>
+<li>父进程的内存锁，mlock(2)、mlockall(2)</li>
+<li>父进程的文件锁，fcntl(2)</li>
+<li>父进程的某些定时器， settimer(2)、alarm(2)、timer_create(2)&hellip;</li>
+<li>见 man 2 fork</li>
+</ul>
+<h2 id="多线程与-fork">多线程与 fork()
+</h2><p>linux 的 fork() 只能克隆当前线程的 thread of control,不能克隆其他线程。 fork() 之后，除了当前线程外，其他线程都消失了。也就是说不能一下子 fork() 出一个和父进程一样的多线程子进程。</p>
+<p>fork() 之后，子进程不能调用：</p>
+<ul>
+<li>malloc(3)。因为 malloc() 在访问全局状态时几乎肯定会加锁。</li>
+<li>任何可能分配或释放内存的函数，包括 new、map::insert()、snprintf&hellip;.</li>
+<li>任何 Pthreads 函数。 不能用 pthread_cond_singal() 去通知父进程，只能通过读些 pipe(2) 来同步(<a class="link" href="http://github.com/chensuo/muduo-protorpc"  target="_blank" rel="noopener"
+    >http://github.com/chensuo/muduo-protorpc</a> 中 Zurg slave 示例的Process::start())</li>
+<li>printf() 系列函数，因为其他线程可能恰好持有 stdout/stderr 的锁。</li>
+<li>除了 man 7 signal 中明确列出的 &ldquo;signal 安全&rdquo; 函数之外的任何函数</li>
+</ul>
+<p>唯一安全的做法：fork() 之后立即调用 exec() 执行另一个程序。彻底隔断父子进程的联系。</p>
+<h2 id="多线程与-signal">多线程与 signal
+</h2><p>多线程程序中，使用 signal 第一原则时不使用 signal。</p>
+<ul>
+<li>不要用 signal 作为 IPC 手段。包括不要用 SIGUSR1 等信号来触发服务端的行为。如果需要参考 9.5 增加监听端口方式来实现双向的、可远程访问的进程控制</li>
+<li>不要使用基于 signal 实现的定时函数，包括 alarm/ualarm/settimer/timer_create、sleep/usleep 。。。</li>
+<li>不主动处理各种异常信号（SIGTERM、SIGINT。。）只用默认语义结束进程。</li>
+<li>没有其他方法时，把异步信号改成同步的文件描述符。现代Linux 做法采用 signalfd(2) 把信号之间转换为文件描述符事件，从根本上避免使用 signal handler.(<a class="link" href="http://github.com/chenshuo/muduo-protorpc"  target="_blank" rel="noopener"
+    >http://github.com/chenshuo/muduo-protorpc</a> 中 Zurg slave 示例的 ChildManager class)</li>
+</ul>
+<h2 id="reference">Reference
+</h2><p>《Time,Clocks and the Ordering of Events in a Distributed System》 <a class="link" href="http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf"  target="_blank" rel="noopener"
+    >http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf</a></p>
+<p>《Threads Cannot be Implemented as a Library》 <a class="link" href="http://www.hpl.hp.com/techreports/2004/HPL-2004-209.pdf"  target="_blank" rel="noopener"
+    >http://www.hpl.hp.com/techreports/2004/HPL-2004-209.pdf</a></p>
+<p><a class="link" href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/V2_chap02.html#tag_15_09"  target="_blank" rel="noopener"
+    >http://pubs.opengroup.org/onlinepubs/9699919799/functions/V2_chap02.html#tag_15_09</a></p>
+<p>自调整数据结构，只读也会不安全 <a class="link" href="http://www.cs.au.dk/~gerth/aa11/slides/selfadjusting.pdf"  target="_blank" rel="noopener"
+    >http://www.cs.au.dk/~gerth/aa11/slides/selfadjusting.pdf</a></p>
+<p><a class="link" href="http://blog.csdn.net/program_think/article/details/3991107"  target="_blank" rel="noopener"
+    >http://blog.csdn.net/program_think/article/details/3991107</a></p>
+<p><a class="link" href="http://www.cppblog.com/lymons/archive/2008/12/19/69810.html"  target="_blank" rel="noopener"
+    >http://www.cppblog.com/lymons/archive/2008/12/19/69810.html</a></p>
+<p><a class="link" href="http://www.cppblog.com/lymons/archive/2008/12/25/70227.html"  target="_blank" rel="noopener"
+    >http://www.cppblog.com/lymons/archive/2008/12/25/70227.html</a></p>
+<p><a class="link" href="http://www.boost.org/doc/libs/1_34_0/doc/html/thread/faq.html"  target="_blank" rel="noopener"
+    >http://www.boost.org/doc/libs/1_34_0/doc/html/thread/faq.html</a></p>
+<p><a class="link" href="http://stackoverflow.com/questions/433989/posix-cancellation-points"  target="_blank" rel="noopener"
+    >http://stackoverflow.com/questions/433989/posix-cancellation-points</a></p>
+<p><a class="link" href="http://pubs.opengroup.org/onlinepubs/000095399/functions/xsh_chap02_09.html#tag_02_09_05_02"  target="_blank" rel="noopener"
+    >http://pubs.opengroup.org/onlinepubs/000095399/functions/xsh_chap02_09.html#tag_02_09_05_02</a></p>
+<p>Cancellation and C++ Exceptions <a class="link" href="http://udrepper.livejournal.com/21541.html"  target="_blank" rel="noopener"
+    >http://udrepper.livejournal.com/21541.html</a></p>
+<p>《ELF Handing For Thread-Local Storage》 <a class="link" href="http://www.akkadia.org/drepper/tls.pdf"  target="_blank" rel="noopener"
+    >http://www.akkadia.org/drepper/tls.pdf</a></p>
+<p>__thread 使用规则 <a class="link" href="http://gcc.gnu.org/onlinedocs/gcc/Thread_002dLocal.html"  target="_blank" rel="noopener"
+    >http://gcc.gnu.org/onlinedocs/gcc/Thread_002dLocal.html</a></p>
+<p><a class="link" href="http://chenshuo.com/book/errata.html"  target="_blank" rel="noopener"
+    >http://chenshuo.com/book/errata.html</a></p>
+<p><a class="link" href="http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them"  target="_blank" rel="noopener"
+    >http://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them</a></p>
+<p><a class="link" href="http://www.cppblog.com/lymons/archive/2008/06/01/51836.html"  target="_blank" rel="noopener"
+    >http://www.cppblog.com/lymons/archive/2008/06/01/51836.html</a></p>
+<p><a class="link" href="http://www.linuxprogrammingblog.com/all-about-linux-signals?page=11"  target="_blank" rel="noopener"
+    >http://www.linuxprogrammingblog.com/all-about-linux-signals?page=11</a></p>
+<p><a class="link" href="http://pubs.opengroup.org/onlinepubs/9699919799/functions/V2_chap02.html#tag_15_04_03"  target="_blank" rel="noopener"
+    >http://pubs.opengroup.org/onlinepubs/9699919799/functions/V2_chap02.html#tag_15_04_03</a></p>
+<p><a class="link" href="http://en.wikipedia.org/wiki/lnterrupt_handler"  target="_blank" rel="noopener"
+    >http://en.wikipedia.org/wiki/lnterrupt_handler</a></p>
+<p><a class="link" href="http://www.gnu.org/software/libc/manual/html_mono/libc.html#Atomic-Data-Access"  target="_blank" rel="noopener"
+    >http://www.gnu.org/software/libc/manual/html_mono/libc.html#Atomic-Data-Access</a></p>
+<p><a class="link" href="http://www.cppblog.com/lymons/archive/2008/06/01/51838.html"  target="_blank" rel="noopener"
+    >http://www.cppblog.com/lymons/archive/2008/06/01/51838.html</a> 和 51837.html</p>
+<p>Linux 新增系统调用启示 <a class="link" href="http://blog.csdn.net/solstice/article/details/5327881"  target="_blank" rel="noopener"
+    >http://blog.csdn.net/solstice/article/details/5327881</a></p>
+<p>《Secure File Descriptor Handling》 <a class="link" href="http://udrepper.livejournal.com/20407.html"  target="_blank" rel="noopener"
+    >http://udrepper.livejournal.com/20407.html</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+<div class="math-katex"></div>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/05%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%97%A5%E5%BF%97/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">05高效的多线程日志</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/03%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E5%9C%BA%E5%90%88%E4%B8%8E%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9E%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">03多线程服务器使用场合与常用模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/02%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E7%B2%BE%E8%A6%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">02线程同步精要</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/01%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E5%AF%B9%E8%B1%A1%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">01多线程下对象生命周期</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">序列化</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src="https://giscus.app/client.js"
+        data-repo="cold-rivers-snow/cold-rivers-snow.github.io"
+        data-repo-id="R_kgDOQFRAmg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOQFRAms4Cw3NC"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+<div class="js-Pjax">
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function() {
+           
+           let comment = document.querySelector(".comment");
+           if (!comment) {
+              return
+           }
+            let script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('data-repo', 'cold-rivers-snow/cold-rivers-snow.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDOQFRAmg');
+            script.setAttribute('data-category', 'Announcements');
+            script.setAttribute('data-category-id', 'DIC_kwDOQFRAms4Cw3NC');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', 'preferred_color_scheme');
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.setAttribute('data-loading', 'lazy');
+            script.async = true;
+            document.querySelector('.site-footer').appendchild(script)
+            
+            (function () {
+                addEventListener("message", (e) => {
+                   if (event.origin !== "https://giscus.app") return;
+                    handler();
+                });
+                window.addEventListener("onColorSchemeChange", handler);
+
+                function handler() {
+                    if (document.documentElement.dataset.scheme === "light") {
+                        setGiscusTheme('light');
+                    } else {
+                        setGiscusTheme('dark_dimmed');
+                    }
+                }
+            })();
+        })(document)
+</script>
+</div>
+    <div class="comment"></div>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 山重水复疑无路，柳暗花明又一村
+    </section>
+    
+    <section class="powerby">
+        
+            山重水复疑无路，柳暗花明又一村 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.99ce1801c4bad426a42fc436add4721e149159dbb598636e9578fd59cf778c83.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<style>
+  @font-face {
+    font-family: 'ChillKai';
+    src: url(https://cold-rivers-snow.github.io/font/ChillKai.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: 'ChillKai';
+    --code-font-family: 'ChillKai';
+  }
+
+  #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://cold-rivers-snow.github.io/icons/backtop.svg);
+    }
+</style>
+
+<script>
+    
+
+    function initScrollTop() {
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (!rightSideBar) {
+            return;
+        }
+        
+        let btn = document.createElement("div");
+        btn.id = "backTopBtn";
+        btn.onclick = backToTop
+        rightSideBar.appendChild(btn)
+        
+        window.onscroll = function() {
+            
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    }
+
+    
+
+    function backToTop(){
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+
+    initScrollTop();
+</script>
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = "https://cold-rivers-snow.github.io/icons/codeMore.png"
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<div id="aplayer"></div>
+<script>
+    const staticDir = "https://cold-rivers-snow.github.io/"+ 'music/';
+    const songs = [
+        'DreamIsPossible-Delacey',
+        '匆匆那年-王菲',
+        '十年-陈奕迅',
+        '一生所爱-卢冠廷',
+    ];
+    let audios = [];
+    songs.forEach((item) => {
+      	const songInfo = item.split('-');
+	      audios.push({
+	        	name: songInfo[0],
+	        	artist: songInfo[1],
+	        	url: staticDir + item + '/song.mp3',
+	        	cover: staticDir + item + '/cover.jpg',
+	        	lrc: staticDir + item + '/lyric.lrc'
+	      });
+    })
+    const ap = new APlayer({
+		    container: document.getElementById('aplayer'),
+            lrcType: 3,
+		    fixed: true,
+		    listMaxHeight: '150px',
+        audio: audios
+    });
+
+    
+
+		window.onbeforeunload = () => {
+        
+        const playInfo = {
+            index: ap.list.index,
+            currentTime: ap.audio.currentTime,
+            paused: ap.paused
+        };
+        localStorage.setItem("playInfo", JSON.stringify(playInfo));
+    };
+
+    
+
+    window.onload = () => {
+        
+        const playInfo = JSON.parse(localStorage.getItem("playInfo"));
+        if (!playInfo) {
+            return;
+        }
+        
+        ap.list.switch(playInfo.index);
+        
+        setTimeout(() => {
+            
+            ap.seek(playInfo.currentTime);
+            
+            if (!playInfo.paused) {
+                ap.play()
+            }
+        }, 500);
+    };
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+
+
+    
+    <script src=https://cold-rivers-snow.github.io/js/topbar.min.js></script>
+
+
+
+<script>
+	var pjax = new Pjax({
+	  selectors: [
+	    ".main-container",
+        ".js-Pjax"
+	  ]
+	})
+
+    pjax._handleResponse = pjax.handleResponse;
+    pjax.handleResponse = function(responseText, request, href, options) {
+        if (request.responseText.match("<html")) {
+            if (responseText) {
+                
+                let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+                
+                let bodyClass = newDom.body.className;
+                document.body.setAttribute("class", bodyClass)
+                
+                pjax._handleResponse(responseText, request, href, options);
+            }
+        } else {
+            
+        }
+    }
+
+    
+    topbar.config({
+        barColors: {
+            '0': 'rgba(255,  255, 255, 1)', 
+            '1.0': 'rgba(0, 149, 234,  1)' 
+        }
+    })
+	
+    document.addEventListener('pjax:send', () => {
+        
+        topbar.show();
+    })
+    document.addEventListener('pjax:complete', () => {
+        
+        window.Stack.init();
+        
+        topbar.hide();
+    })
+</script>
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    
+    showHideView();
+    document.addEventListener('pjax:complete', () => {
+      const existingScript = document.querySelector('script[src="https://cn.vercount.one/js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      const busuanziScript = document.createElement('script');
+      busuanziScript.src = 'https://cn.vercount.one/js';
+      busuanziScript.async = true;
+      document.body.appendChild(busuanziScript);
+      showHideView();
+    });
+</script>
+
+<script>
+    async function renderKaTeX() {
+        
+        let katex = document.querySelector(".math-katex");
+        if (!katex) {
+            return;
+        }
+        
+        while (typeof renderMathInElement !== 'function') {
+            await delay(500);
+        }        
+        
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });
+    }
+    
+    
+
+    function delay(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+
+    document.addEventListener('pjax:complete', () => {
+        renderKaTeX();
+    })
+</script>
+
+<script>
+    async function renderdetails() {
+        
+        let details = document.querySelector(".article-details");
+        if (!details) {
+            return;
+        }
+        
+        while (typeof renderMathInElement !== 'function') {
+            await delay(500);
+        }        
+        
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });
+    }
+    
+    
+
+    function delay(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+
+    document.addEventListener('pjax:complete', () => {
+        renderdetails();
+    })
+</script>
+
+
+    </body>
+</html>

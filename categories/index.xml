@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 寒江雪的博客</title>
+        <link>https://cold-rivers-snow.github.io/categories/</link>
+        <description>Recent content in Categories on 寒江雪的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>山重水复疑无路，柳暗花明又一村</copyright>
+        <lastBuildDate>Sat, 01 Nov 2025 23:20:14 +0800</lastBuildDate><atom:link href="https://cold-rivers-snow.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>C&#43;&#43;</title>
+        <link>https://cold-rivers-snow.github.io/categories/c&#43;&#43;/</link>
+        <pubDate>Sat, 01 Nov 2025 23:20:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/c&#43;&#43;/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Linux</title>
+        <link>https://cold-rivers-snow.github.io/categories/linux/</link>
+        <pubDate>Sat, 01 Nov 2025 23:20:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/linux/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Muduo</title>
+        <link>https://cold-rivers-snow.github.io/categories/muduo/</link>
+        <pubDate>Sat, 01 Nov 2025 23:20:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/muduo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>多线程</title>
+        <link>https://cold-rivers-snow.github.io/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+        <pubDate>Sat, 01 Nov 2025 23:20:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>数据结构</title>
+        <link>https://cold-rivers-snow.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+        <pubDate>Tue, 28 Oct 2025 10:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Brpc</title>
+        <link>https://cold-rivers-snow.github.io/categories/brpc/</link>
+        <pubDate>Mon, 27 Oct 2025 09:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/brpc/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Golang</title>
+        <link>https://cold-rivers-snow.github.io/categories/golang/</link>
+        <pubDate>Mon, 27 Oct 2025 09:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/golang/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://cold-rivers-snow.github.io/categories/hugo/</link>
+        <pubDate>Tue, 21 Oct 2025 20:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>博客</title>
+        <link>https://cold-rivers-snow.github.io/categories/%E5%8D%9A%E5%AE%A2/</link>
+        <pubDate>Tue, 21 Oct 2025 20:04:14 +0800</pubDate>
+        
+        <guid>https://cold-rivers-snow.github.io/categories/%E5%8D%9A%E5%AE%A2/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
