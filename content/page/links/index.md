@@ -33,6 +33,9 @@ links:
   - title: 陈硕的网站
     description: 陈硕的网站.
     website: https://www.chenshuo.com/
+  - title: 分享网站
+    description: 分享网站.
+    website: https://lovetoshare.top/
 menu:
     main: 
         weight: -50
