@@ -1,0 +1,56 @@
+{{ $rss_url := .Get 0 }}
+{{ $count := default 5 (.Get 1) }}
+{{ $current_time := now }}
+
+{{/* 1. 构造 API 请求 URL */}}
+{{ $api_base := "https://api.rss2json.com/v1/api.json?rss_url=" }}
+{{ $api_url := printf "%s%s" $api_base $rss_url }}
+
+{{/* 2. 直接获取远程资源，不使用 'try' */}}
+{{ $remote_resource := resources.GetRemote $api_url }}
+
+{{ with $remote_resource }}
+    {{ $json_data := .Content | transform.Unmarshal }}
+
+    {{ with $json_data }}
+        {{ $feed_title := .feed.title }}
+        {{ $today_items := slice }}
+        
+        {{/* 过滤：只保留当天发布的文章 */}}
+        {{ range .items }}
+            {{ $pub_time := .pubDate | time.AsTime }}
+
+            {{/* 比较年、月、日是否一致 */}}
+            {{ if and (eq ($pub_time.Year) ($current_time.Year)) (eq ($pub_time.Month) ($current_time.Month)) (eq ($pub_time.Day) ($current_time.Day)) }}
+                {{ $today_items = $today_items | append . }}
+            {{ end }}
+        {{ end }}
+
+        {{/* 4. 渲染：只有当 'len $today_items' > 0 时才显示内容 */}}
+        {{ if gt (len $today_items) 0 }}
+            <div class="rss-feed-container" style="border: 1px solid #0056b3; padding: 15px; border-radius: 5px; margin: 20px 0; background-color: #f0f8ff;">
+                <h4>📢 **今日发布内容**：{{ $feed_title }}</h4>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                {{ range first $count $today_items }}
+                    <li>
+                        <a href="{{ .link }}" target="_blank" rel="noopener noreferrer" style="font-weight: bold;">{{ .title }}</a>
+                        <span style="display: block; font-size: 0.85em; color: #666;">
+                            发布时间：{{ .pubDate | time.Format "2006-01-02 15:04" }}
+                        </span>
+                    </li>
+                {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+
+    {{ else }}
+        <div style="color: red; border: 1px solid red; padding: 10px;">
+            错误：成功连接，但无法解析 JSON 或 RSS 内容为空。
+        </div>
+    {{ end }}
+
+{{ else }}
+    <div style="color: red; border: 1px solid red; padding: 10px;">
+        **构建错误：网络连接失败或超时**。无法获取远程 RSS 内容。
+    </div>
+{{ end }}
