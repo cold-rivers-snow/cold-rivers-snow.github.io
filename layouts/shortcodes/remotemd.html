@@ -1,0 +1,35 @@
+{{ $url := .Get 0 }}
+
+{{ with $url }}
+    {{/* 注意：此 Shortcode 没有 'try' 错误处理。
+      如果 Hugo 在构建时无法连接到 $url (例如网络超时)，
+      整个构建将会失败并报错。
+      
+      这是必要的，因为带 'try' 的版本在您的 Hugo 中存在 Bug。
+      
+      请确保：
+      1. 您在 Markdown 中使用的是 CDN 链接 (cdn.jsdelivr.net)。
+      2. 您在网络稳定的环境中运行 'hugo' 命令。
+    */}}
+
+    {{ $remote_resource := resources.GetRemote $url }}
+
+    {{ with $remote_resource }}
+        {{ $content := .Content }}
+        
+        <div class="remote-content-container">
+            {{ $content | markdownify }}
+            <p style="font-size: 0.8em; color: #888;">--- 内容来自远程文件：{{ $url }} ---</p>
+        </div>
+        
+    {{ else }}
+        <div style="border: 1px solid #ff4444; padding: 10px; background-color: #ffeeee;">
+            **错误：** 资源获取失败 (Else block)。
+        </div>
+    {{ end }}
+    
+{{ else }}
+    <div style="border: 1px solid #ffaa00; padding: 10px; background-color: #fff8e1;">
+        **Shortcode 错误：** 请提供远程 Markdown 文件的地址。
+    </div>
+{{ end }}
