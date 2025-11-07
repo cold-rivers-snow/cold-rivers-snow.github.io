@@ -17,6 +17,8 @@ menu:
 
 {{< embedrss "https://coolshell.cn/feed" 10 >}}
 
+{{< embedrss "https://ainews.liduos.com/rss.xml" >}}
+
 ## 每日动态
 
 {{< embedrssdaily "https://www.infoq.cn/feed" >}}
