@@ -47,7 +47,7 @@ fi
 log "开始拉取远端更新并 rebase..."
 
 # 拉取远端变更并 rebase 到当前分支
-if git pull --rebase origin "$current_branch"; then
+if git pull --rebase gitee "$current_branch"; then
     log "成功拉取并 rebase 远端更新。"
 else
     error "拉取或 rebase 失败！请手动解决冲突后重试。"
@@ -57,6 +57,11 @@ log "正在推送本地更新到远端..."
 
 # 推送当前分支到远端
 if git push origin "$current_branch"; then
+    log "推送成功！"
+else
+    error "推送失败！请检查权限或网络问题。"
+fi
+if git push gitee "$current_branch"; then
     log "推送成功！"
 else
     error "推送失败！请检查权限或网络问题。"
