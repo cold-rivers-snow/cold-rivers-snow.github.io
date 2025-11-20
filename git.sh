@@ -56,12 +56,12 @@ fi
 log "正在推送本地更新到远端..."
 
 # 推送当前分支到远端
-if git push origin "$current_branch"; then
+if git push origin "$current_branch" -f; then
     log "推送成功！"
 else
     error "推送失败！请检查权限或网络问题。"
 fi
-if git push gitee "$current_branch"; then
+if git push gitee "$current_branch" -f; then
     log "推送成功！"
 else
     error "推送失败！请检查权限或网络问题。"
