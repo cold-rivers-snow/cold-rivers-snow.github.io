@@ -36,6 +36,9 @@ links:
   - title: 分享网站
     description: 分享网站.
     website: https://lovetoshare.top/
+  - title: 极客时间文档
+    description: 极客时间文档.
+    website: https://uaxe.github.io/geektime-docs/
 menu:
     main: 
         weight: -50
