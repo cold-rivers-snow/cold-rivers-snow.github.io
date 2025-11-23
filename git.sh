@@ -91,7 +91,7 @@ for remote in $remotes; do
 
     if [ "$should_push" = true ]; then
         log "正在推送本地更新到 $remote ($url)..."
-        if git push "$remote" "$current_branch"; then
+        if git push "$remote" "$current_branch" -f; then
             log "推送到 $remote 成功！"
         else
             error "推送到 $remote 失败！请检查权限或网络问题。"
