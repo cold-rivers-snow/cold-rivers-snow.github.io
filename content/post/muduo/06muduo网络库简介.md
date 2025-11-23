@@ -227,6 +227,8 @@ TCP 网络编程最本质的是处理三个半事件：
 
 ## 编译 c-ares 相关问题
 
+https://github.com/cold-rivers-snow/muduo/commit/1a6f10f35a11d36111a041163290b310fb8fbe3f
+
 ARES_VERSION 是 c-ares 库提供的一个预定义宏，在头文件<ares.h>中，它表示当前使用的 c-ares 库的版本号。这个宏的值是一个 24 位的十六进制数
 
 0x010F04 表示 c-ares 1.15.4 版本
