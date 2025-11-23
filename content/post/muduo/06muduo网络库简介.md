@@ -213,6 +213,18 @@ muduo/muduo/net
 7 directories, 40 files
 ```
 
+muduo 头文件使用前置声明，减少头文件引入的依赖关系。
+
+https://github.com/chenshuo/muduo-udns ：基于 UDNS 的异步 DNS 解析
+
+https://github.com/chenshuo/muduo-protorpc：基于 muduo 的 RPC 框架，自动管理对象生命周期。
+
+TCP 网络编程最本质的是处理三个半事件：
+1. 连接建立。（客户端发起连接，服务端被动接受连接）
+2. 消息到达，文件描述符可读。（阻塞和非阻塞，如何处理分包，应用层的缓冲如何设计等）
+3. 连接断开。（主动断开和被动断开）
+3.5. 消息发送完毕（数据写入操作系统的缓冲区，将TCP协议栈负责数据的发送和重传，不代表对方已经收到数据）。
+
 
 
 ## Reference
@@ -223,4 +235,8 @@ http://www.oschina.net/question/28_61182
 
 http://aur.archlinux.org/packages.php?ID=49251
 
+http://www.cs.nott.ac.uk/~cah/G51ISS/Document/NoSliverBullet.html
 
+http://redmin.lighttpd.net/issues/show/2105
+
+http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2010_01.txt
