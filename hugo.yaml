@@ -3,6 +3,7 @@ languageCode: zh-cn
 theme: stack
 title: 寒江雪的博客
 copyright: 山重水复疑无路，柳暗花明又一村
+timeout: 60000 # 增加超时时间到 60秒
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
