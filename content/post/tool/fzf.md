@@ -6,33 +6,33 @@ author: ["寒江雪"]
 categories:
 - tool
 
-description: "" # 文章描述，与搜索优化相关
-summary: "工具实战" # 文章简单描述，会展示在主页
-draft: true # 是否为草稿
-math: true # 启用/禁用KaTeX渲染。
+description: ""
+summary: "工具实战"
+draft: true
+math: true
 comments: true
-image:  # 文章图片
-toc: true # 目录 默认值 .Site.Params.Article.toc， bool 类型，至少有一个标题才会显示
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-readingTime: true # 显示阅读时间
-autonumbering: true # 目录自动编号
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-searchHidden: false # 该页面可以被搜索到
-showbreadcrumbs: true #顶部显示当前路径
-mermaid: true # 是否流程图渲染
-style:  # 用于文章页面中出现的分类术语徽章的额外CSS样式。用于列表页面，目前仅支持background和color
+image: 
+toc: true
+showToc: true
+TocOpen: true
+readingTime: true
+autonumbering: true
+hidemeta: false
+disableShare: true
+searchHidden: false
+showbreadcrumbs: true
+mermaid: true
+style:  
     background: "white"
     color: "black"
 license: 
     enabled: false
     default: Licensed under CC BY-NC-SA 4.0
-cover:   # 封面的详细信息
-    image: ""  # 封面图片
-    caption: "" # 封面图片下方显示的文字说明或标题
-    alt: "" # 封面图片提供替代文本
-    relative: false # 所提供的图片路径是否为相对路径
+cover:
+    image: ""
+    caption: ""
+    alt: ""
+    relative: false
 ---
 
 在日常开发和运维中，命令行工具就像程序员的“瑞士军刀”。今天要介绍的 **fzf（Fuzzy Finder）**，是一个能让你在终端中**快速筛选、查找、执行命令**的神器。无论你是 Linux、macOS 还是 Windows（通过 WSL）用户，fzf 都能让你的命令行效率翻倍！
