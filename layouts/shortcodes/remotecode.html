@@ -7,7 +7,7 @@
 {{ $options := .Get 2 }}
 
 {{/* Attempt to fetch the remote resource. */}}
-{{ $resource := resources.GetRemote $url (dict "headers" (dict "User-Agent" "Mozilla/5.0 (compatible; Hugo/0.152.2; +https://gohugo.io/)")) }}
+{{ $resource := resources.GetRemote $url (dict "headers" (dict "User-Agent" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")) }}
 
 {{/* Check if the resource object exists. 
      If $resource is nil (i.e., fetch failed), the 'with' block is skipped.
