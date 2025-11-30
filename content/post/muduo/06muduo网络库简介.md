@@ -225,6 +225,54 @@ TCP 网络编程最本质的是处理三个半事件：
 3. 连接断开。（主动断开和被动断开）
 3.5. 消息发送完毕（数据写入操作系统的缓冲区，将TCP协议栈负责数据的发送和重传，不代表对方已经收到数据）。
 
+## echo 服务实现
+
+muduo 使用不需要指定类派生，不用复写虚函数，只需要注册回调即可。（与 muduo 设计哲学一致）
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/simple/echo/echo.h" "c++" "linenos=true" >}}
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/simple/echo/echo.cc" "c++" "linenos=true" >}}
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/simple/echo/main.cc" "c++" "linenos=true" >}}
+
+## finger 服务
+
+python twisted 是一个非常好的网络库，采用 reactor 作为网络库基本模型。
+
+1. 拒绝连接，空等。
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger01.cc" "c++" "linenos=true" >}}
+
+2. 接受新连接，不处理数据。
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger02.cc" "c++" "linenos=true" >}}
+
+3. 主动断开连接。通过打印日志发现，使用 nc 客户端链接后，发送数据，服务的接收到第一次发送的数据后直接断开，不在接收数据。
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger03.cc" "c++" "linenos=true" >}}
+
+4. 读取用户名，然后断开连接。与 finger03 类似，调用回调不同，一个是连接，一个是数据。
+
+读到 \r\n 结尾的消息就会断开连接。
+
+安全问题：
+  - 如果客户端不换行会把服务器内存撑爆。
+  - Buffer：：findCRLF()是线性查找的，如果客户端每次发送一个字节，服务的的时间复杂的为 O(n^2)，消耗 CPU 资源。
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger04.cc" "c++" "linenos=true" >}}
+
+5. 读取用户名，输出错我，然后断开连接。
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger05.cc" "c++" "linenos=true" >}}
+
+6. 在空的 UserMap 中查找用户
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger06.cc" "c++" "linenos=true" >}}
+
+7. 往 UserMap 中添加用户
+
+{{< remotecode "https://raw.githubusercontent.com/cold-rivers-snow/muduo/master/examples/twisted/finger/finger07.cc" "c++" "linenos=true" >}}
+
 ## 编译 c-ares 相关问题
 
 https://github.com/cold-rivers-snow/muduo/commit/1a6f10f35a11d36111a041163290b310fb8fbe3f
@@ -253,3 +301,17 @@ http://www.cs.nott.ac.uk/~cah/G51ISS/Document/NoSliverBullet.html
 http://redmin.lighttpd.net/issues/show/2105
 
 http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2010_01.txt
+
+http://zedshaw.com/essays/programmer_stats.html
+
+http://www.percona.com/files/presentations/VELOCITY2012-Beyond-the-Numbers.pdf
+
+http://gist.github.com/564985
+
+http://think-async.com/Asio/Download
+
+http://monkey.org/~provos/libevent-2.0.6-rc.tar.gz
+
+http://asio.cvs.sourceforge.net/viewvc/asio/asio/src/tests/performance/
+
+http://think-async.com/Asio/LinuxPerformanceImprovements
