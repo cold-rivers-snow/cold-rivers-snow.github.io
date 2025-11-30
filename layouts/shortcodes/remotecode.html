@@ -7,21 +7,6 @@
 {{ $options := .Get 2 }}
 
 {{/* Attempt to fetch the remote resource. */}}
-{{/* Rewrite GitHub raw URLs to jsDelivr for better connectivity */}}
-{{ $u := urls.Parse $url }}
-{{ if eq $u.Host "raw.githubusercontent.com" }}
-    {{ $parts := split $u.Path "/" }}
-    {{/* Path starts with /, so parts[0] is empty. We need at least "", user, repo, ref, file */}}
-    {{ if ge (len $parts) 5 }}
-        {{ $user := index $parts 1 }}
-        {{ $repo := index $parts 2 }}
-        {{ $ref := index $parts 3 }}
-        {{ $filePath := delimit (after 4 $parts) "/" }}
-        {{ $url = printf "https://cdn.jsdelivr.net/gh/%s/%s@%s/%s" $user $repo $ref $filePath }}
-    {{ end }}
-{{ end }}
-
-{{/* Attempt to fetch the remote resource. */}}
 {{ $resource := resources.GetRemote $url (dict "headers" (dict "User-Agent" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")) }}
 
 {{/* Check if the resource object exists. 
