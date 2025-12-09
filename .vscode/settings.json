@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 18,
+    "files.autoSave": "afterDelay",
+    "debug.console.fontSize": 16,
+    "scm.inputFontSize": 16,
+    "terminal.integrated.fontSize": 16,
+    "markdown.preview.fontSize": 16,
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+}
