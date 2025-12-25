@@ -5,9 +5,16 @@
 {{ $url := strings.TrimSpace (.Get 0) }}
 {{ $language := .Get 1 }}
 {{ $options := .Get 2 }}
+{{ $userAgent := "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" }}
 
 {{/* Attempt to fetch the remote resource. */}}
-{{ $resource := resources.GetRemote $url (dict "headers" (dict "User-Agent" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")) }}
+{{ $resource := resources.GetRemote $url (dict "headers" (dict "User-Agent" $userAgent)) }}
+
+{{/* If fetch failed and it's a GitHub raw URL, try fetching from jsDelivr as fallback */}}
+{{ if and (not $resource) (findRE "^https?://raw\\.githubusercontent\\.com/" $url) }}
+    {{ $url = replaceRE "^https?://raw\\.githubusercontent\\.com/([^/]+)/([^/]+)/([^/]+)/(.*)$" "https://cdn.jsdelivr.net/gh/$1/$2@$3/$4" $url }}
+    {{ $resource = resources.GetRemote $url (dict "headers" (dict "User-Agent" $userAgent)) }}
+{{ end }}
 
 {{/* Check if the resource object exists. 
      If $resource is nil (i.e., fetch failed), the 'with' block is skipped.
