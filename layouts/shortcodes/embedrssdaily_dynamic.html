@@ -3,12 +3,15 @@
 <script src="{{ $js.RelPermalink }}" defer></script>
 
 {{ $url := .Get 0 }}
-{{ $id := printf "dyn-daily-%x" (now.Unix) }}
+{{ $title := .Get "title" | default "" }}
+{{ $link := .Get "link" | default "" }}
+{{ $id := printf "dyn-daily-%x" (now.UnixNano) }}
 
 {{/* 构建时预览 */}}
 {{ $fallback_html := "" }}
 {{ $resp := resources.GetRemote $url }}
 
+{{ $display_items := slice }}
 {{ if $resp }}
 {{ $feed := $resp | transform.Unmarshal }}
 {{ $all_items := slice }}
@@ -16,34 +19,44 @@
 {{ else if $feed.entry }} {{ $all_items = $feed.entry }} {{ end }}
 
 {{ $today := now.Format "2006-01-02" }}
-{{ $daily := slice }}
 {{ range $all_items }}
 {{ $d := .pubDate | default .published | default .updated | default "" }}
-{{ if in $d $today }} {{ $daily = $daily | append . }} {{ end }}
+{{ if in $d $today }} {{ $display_items = $display_items | append . }} {{ end }}
 {{ end }}
 
-{{/* 降级逻辑：如果今天没资讯，就显示最近 3 条 */}}
-{{ $display_items := $daily }}
-{{ if eq (len $daily) 0 }}
+{{ if eq (len $display_items) 0 }}
 {{ $display_items = first 3 $all_items }}
 {{ end }}
-
-<ul style="list-style-type: disc; padding-left: 20px;">
-    {{ range $display_items }}
-    {{ $title := .title }}
-    {{ $link := .link }}
-    {{ if reflect.IsMap .link }} {{ $link = .link.href }} {{ end }}
-    <li><a href="{{ $link }}" target="_blank" style="font-weight:bold;color:#0056b3;">{{ $title }}</a></li>
-    {{ end }}
-</ul>
 {{ end }}
 
 <div id="{{ $id }}" class="dynamic-container">
+    {{ if or $title $link }}
+    <div style="margin-bottom: 10px; font-weight: bold; border-left: 4px solid #0056b3; padding-left: 10px;">
+        {{ if $link }}
+        <a href="{{ $link }}" target="_blank" style="color: #333; text-decoration: none;">{{ $title | default $link }}
+            🔗</a>
+        {{ else }}
+        {{ $title }}
+        {{ end }}
+    </div>
+    {{ end }}
     <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
         🔍 扫描即时动态...
     </div>
     <div class="dynamic-content-body">
-        {{ $fallback_html | safeHTML }}
+        {{ if $display_items }}
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            {{ range $display_items }}
+            {{ $title := .title }}
+            {{ $link := .link }}
+            {{ if reflect.IsMap .link }} {{ $link = .link.href }} {{ end }}
+            <li style="margin-bottom:10px;"><a href="{{ $link }}" target="_blank"
+                    style="font-weight:bold;color:#0056b3;">{{ $title }}</a></li>
+            {{ end }}
+        </ul>
+        {{ else }}
+        正在从云端拉取实时内容...
+        {{ end }}
     </div>
 </div>
 

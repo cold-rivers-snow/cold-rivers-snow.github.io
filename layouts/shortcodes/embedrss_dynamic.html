@@ -4,48 +4,48 @@
 
 {{ $url := .Get 0 }}
 {{ $count := .Get 1 | default 5 }}
-{{ $id := printf "dyn-rss-%x" (now.Unix) }}
+{{ $title_param := .Get "title" | default "" }}
+{{ $link_param := .Get "link" | default "" }}
+{{ $id := printf "dyn-rss-%x" (now.UnixNano) }}
 
 {{/* 构建时抓取内容作为“保底”显示 */}}
-{{ $fallback_html := "" }}
 {{ $resp := resources.GetRemote $url }}
+{{ $fallback_items := slice }}
 
 {{ if $resp }}
 {{ $feed := $resp | transform.Unmarshal }}
-{{ $items := slice }}
-
-{{/* 兼容性处理：RSS 2.0 vs Atom */}}
-{{ if $feed.channel.item }}
-{{ $items = $feed.channel.item }}
-{{ else if $feed.entry }}
-{{ $items = $feed.entry }}
-{{ end }}
-
-{{ if gt (len $items) 0 }}
-{{ $fallback_html = "<ul>" }}
-    {{ range first $count $items }}
-    {{ $title := .title }}
-    {{ $link := .link }}
-    {{/* Atom 的 link 结构可能不同 */}}
-    {{ if reflect.IsMap .link }}
-    {{ $link = .link.href }}
-    {{ end }}
-    {{ $fallback_html = printf "%s<li><a href='%s' target='_blank'>%s</a></li>" $fallback_html $link $title }}
-    {{ end }}
-    {{ $fallback_html = printf "%s</ul>" $fallback_html }}
-{{ else }}
-{{ $fallback_html = "<p style='color:#999;'>正在尝试建立实时连线...</p>" }}
-{{ end }}
-{{ else }}
-{{ $fallback_html = "<p style='color:#999;'>正在从云端拉取快照...</p>" }}
+{{ if $feed.channel.item }} {{ $fallback_items = first $count $feed.channel.item }}
+{{ else if $feed.entry }} {{ $fallback_items = first $count $feed.entry }} {{ end }}
 {{ end }}
 
 <div id="{{ $id }}" class="dynamic-container">
+    {{ if or $title_param $link_param }}
+    <div style="margin-bottom: 10px; font-weight: bold; border-left: 4px solid #0056b3; padding-left: 10px;">
+        {{ if $link_param }}
+        <a href="{{ $link_param }}" target="_blank" style="color: #333; text-decoration: none;">{{ $title_param |
+            default $link_param }} 🔗</a>
+        {{ else }}
+        {{ $title_param }}
+        {{ end }}
+    </div>
+    {{ end }}
     <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
         📡 正在同步云端资讯...
     </div>
     <div class="dynamic-content-body">
-        {{ $fallback_html | safeHTML }}
+        {{ if $fallback_items }}
+        <ul style="list-style-type: disc; padding-left: 20px;">
+            {{ range $fallback_items }}
+            {{ $t := .title }}
+            {{ $l := .link }}
+            {{ if reflect.IsMap .link }} {{ $l = .link.href }} {{ end }}
+            <li style="margin-bottom:10px;"><a href="{{ $l }}" target="_blank"
+                    style="font-weight:bold;color:#0056b3;">{{ $t }}</a></li>
+            {{ end }}
+        </ul>
+        {{ else }}
+        正在从云端拉取 snapshot...
+        {{ end }}
     </div>
 </div>
 

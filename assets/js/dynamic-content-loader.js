@@ -15,8 +15,7 @@ function toggleCollapse(btn) {
     const container = btn.closest('.dynamic-container');
     const contentBody = container.querySelector('.dynamic-content-body');
     const isCollapsed = contentBody.classList.toggle('collapsed');
-    btn.innerHTML = isCollapsed ? '🔼 展开更多内容' : '🔽 收起内容';
-    contentBody.style.maxHeight = isCollapsed ? '300px' : 'none';
+    btn.innerHTML = isCollapsed ? '🔽 展开更多内容' : '🔼 收起内容';
 }
 
 function checkAndApplyCollapse(id) {
@@ -30,7 +29,7 @@ function checkAndApplyCollapse(id) {
         if (!container.querySelector('.toggle-btn')) {
             const btn = document.createElement('button');
             btn.className = 'toggle-btn';
-            btn.innerHTML = '🔼 展开更多内容';
+            btn.innerHTML = '🔽 展开更多内容';
             btn.onclick = function () { toggleCollapse(this); };
             container.appendChild(btn);
         }
@@ -134,10 +133,10 @@ function simpleMarkdownToHtml(markdown) {
 const style = document.createElement('style');
 style.textContent = `
     .dynamic-container { border: 1px solid #e1e4e8; border-radius: 8px; margin: 20px 0; padding: 15px; background: #fafafa; }
-    .dynamic-content-body { overflow: hidden; transition: max-height 0.4s ease; position: relative; }
-    .dynamic-content-body.collapsed { max-height: 300px; }
+    .dynamic-content-body { overflow: hidden; transition: max-height 0.3s ease-in-out; position: relative; max-height: 2000px; }
+    .dynamic-content-body.collapsed { max-height: 280px !important; }
     .dynamic-content-body.collapsed::after {
-        content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 60px;
+        content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 50px;
         background: linear-gradient(transparent, #fafafa); pointer-events: none;
     }
     .toggle-btn {

@@ -2,20 +2,9 @@
 {{ $js := resources.Get "js/dynamic-content-loader.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" defer></script>
 
-{{ $url := .Get 0 }}
 {{ $title := .Get "title" | default "" }}
 {{ $link := .Get "link" | default "" }}
-
-{{ $id := printf "dyn-md-%x" (now.UnixNano) }}
-
-{{/* 1. 构建时先获取一次作为备份内容 */}}
-{{ $fallback := "" }}
-{{ $remote := resources.GetRemote $url }}
-{{ if $remote }}
-{{ $fallback = $remote.Content | markdownify }}
-{{ else }}
-{{ $fallback = "正在从云端拉取实时内容..." }}
-{{ end }}
+{{ $id := printf "collapse-%x" (now.UnixNano) }}
 
 <div id="{{ $id }}" class="dynamic-container">
     {{ if or $title $link }}
@@ -28,18 +17,15 @@
         {{ end }}
     </div>
     {{ end }}
-    <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
-        加载中...
-    </div>
     <div class="dynamic-content-body">
-        {{ $fallback }}
+        {{ .Inner | markdownify }}
     </div>
 </div>
 
 <script>
     window.addEventListener('load', function () {
-        if (typeof silentUpdate === 'function') {
-            silentUpdate('{{ $id }}', '{{ $url }}', 'md');
+        if (typeof checkAndApplyCollapse === 'function') {
+            checkAndApplyCollapse('{{ $id }}');
         }
     });
 </script>

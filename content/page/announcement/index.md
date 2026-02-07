@@ -22,3 +22,5 @@ menu:
 ## 每日动态
 
 {{< embedrssdaily_dynamic "https://www.infoq.cn/feed" >}}
+
+{{< remotemd_dynamic "https://raw.githubusercontent.com/cold-rivers-snow/hjxrss/gh-pages/README.md" >}}
