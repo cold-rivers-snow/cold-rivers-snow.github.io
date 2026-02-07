@@ -1,0 +1,56 @@
+{{/* 确保加载 JS 库 */}}
+{{ $js := resources.Get "js/dynamic-content-loader.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+
+{{ $url := .Get 0 }}
+{{ $id := printf "dyn-daily-%x" (now.Unix) }}
+
+{{/* 构建时预览 */}}
+{{ $fallback_html := "" }}
+{{ $resp := resources.GetRemote $url }}
+
+{{ if $resp }}
+{{ $feed := $resp | transform.Unmarshal }}
+{{ $all_items := slice }}
+{{ if $feed.channel.item }} {{ $all_items = $feed.channel.item }}
+{{ else if $feed.entry }} {{ $all_items = $feed.entry }} {{ end }}
+
+{{ $today := now.Format "2006-01-02" }}
+{{ $daily := slice }}
+{{ range $all_items }}
+{{ $d := .pubDate | default .published | default .updated | default "" }}
+{{ if in $d $today }} {{ $daily = $daily | append . }} {{ end }}
+{{ end }}
+
+{{/* 降级逻辑：如果今天没资讯，就显示最近 3 条 */}}
+{{ $display_items := $daily }}
+{{ if eq (len $daily) 0 }}
+{{ $display_items = first 3 $all_items }}
+{{ end }}
+
+<ul style="list-style-type: disc; padding-left: 20px;">
+    {{ range $display_items }}
+    {{ $title := .title }}
+    {{ $link := .link }}
+    {{ if reflect.IsMap .link }} {{ $link = .link.href }} {{ end }}
+    <li><a href="{{ $link }}" target="_blank" style="font-weight:bold;color:#0056b3;">{{ $title }}</a></li>
+    {{ end }}
+</ul>
+{{ end }}
+
+<div id="{{ $id }}" class="dynamic-container">
+    <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
+        🔍 扫描即时动态...
+    </div>
+    <div class="dynamic-content-body">
+        {{ $fallback_html | safeHTML }}
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        if (typeof silentUpdate === 'function') {
+            silentUpdate('{{ $id }}', '{{ $url }}', 'rss', 10);
+        }
+    });
+</script>

@@ -9,16 +9,16 @@ menu:
 
 ## 安全资讯
 
-{{< remotemd "https://raw.githubusercontent.com/Vu1nT0tal/yarb/main/today.md" >}}
+{{< remotemd_dynamic "https://raw.githubusercontent.com/Vu1nT0tal/yarb/main/today.md" >}}
 
 ## 博客资讯
 
-{{< embedrss "https://www.ruanyifeng.com/blog/atom.xml" >}}
+{{< embedrss_dynamic "https://www.ruanyifeng.com/blog/atom.xml" >}}
 
-{{< embedrss "https://coolshell.cn/feed" 10 >}}
+{{< embedrss_dynamic "https://coolshell.cn/feed" >}}
 
-{{< embedrss "https://ainews.liduos.com/rss.xml" >}}
+{{< embedrss_dynamic "https://ainews.liduos.com/rss.xml" >}}
 
 ## 每日动态
 
-{{< embedrssdaily "https://www.infoq.cn/feed" >}}
+{{< embedrssdaily_dynamic "https://www.infoq.cn/feed" >}}

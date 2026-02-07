@@ -13,6 +13,12 @@ DefaultContentLanguage: zh-cn
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
 
+# 缓存配置 - 禁用远程资源缓存，确保每次构建获取最新内容
+caches:
+    getresource:
+        maxAge: 0s  # 不缓存远程资源
+
+
 languages:
     zh-cn:
         languageName: 中文

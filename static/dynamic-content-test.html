@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态加载功能测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+
+        .test-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .test-section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea22 0%, #764ba244 100%);
+            border-radius: 10px;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+
+        .demo-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border: 2px dashed #ddd;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 动态内容加载功能修复完成</h1>
+            <div class="status">✅ 所有问题已修复</div>
+            <p style="margin-top: 20px; color: #666; font-size: 1.1em;">
+                博客现在可以实时显示最新内容，不再受构建时缓存影响
+            </p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>🛠️ 修复的问题</h2>
+                <ul class="feature-list">
+                    <li>✅ GitHub内容CORS跨域问题</li>
+                    <li>✅ RSS订阅加载失败问题</li>
+                    <li>✅ 页面显示不规整问题</li>
+                    <li>✅ 错误提示不友好问题</li>
+                    <li>✅ 移除无法访问的源</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>⚡ 新增功能</h2>
+                <ul class="feature-list">
+                    <li>🔄 jsdelivr CDN代理</li>
+                    <li>⏱️ 10秒超时控制</li>
+                    <li>🔁 多URL备选机制</li>
+                    <li>🔘 一键重试按钮</li>
+                    <li>📊 详细错误信息</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>📈 性能提升</h2>
+                <ul class="feature-list">
+                    <li>⚡ CDN加速加载</li>
+                    <li>🚀 防缓存时间戳</li>
+                    <li>💾 优雅的错误降级</li>
+                    <li>🎯 智能重试逻辑</li>
+                    <li>📱 响应式设计</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🎨 用户体验</h2>
+                <ul class="feature-list">
+                    <li>💫 流畅的加载动画</li>
+                    <li>🎯 清晰的状态提示</li>
+                    <li>📝 可折叠技术细节</li>
+                    <li>🔔 表情图标增强</li>
+                    <li>🎭 统一的视觉风格</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 实时测试 - GitHub Markdown加载</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                测试使用jsdelivr CDN代理加载GitHub内容（避免CORS问题）
+            </p>
+            <div class="demo-container" id="test-github-content">
+                <div class="loading-spinner">正在加载...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 实时测试 - RSS订阅加载</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                测试加载阮一峰的科技博客RSS订阅
+            </p>
+            <div class="demo-container" id="test-rss-content">
+                <div class="loading-spinner">正在加载...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 style="color: #667eea; margin-bottom: 20px;">📚 技术实现</h2>
+
+            <h3>CDN代理转换</h3>
+            <pre style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 10px; overflow-x: auto;"><code>// 将GitHub raw URL转换为CDN URL
+原始URL: https://raw.githubusercontent.com/user/repo/branch/file.md
+CDN URL: https://cdn.jsdelivr.net/gh/user/repo@branch/file.md
+
+// 这样可以避免CORS跨域限制，并获得CDN加速</code></pre>
+
+            <h3 style="margin-top: 30px;">超时控制</h3>
+            <pre style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 10px; overflow-x: auto;"><code>const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+const response = await fetch(url, { signal: controller.signal });
+clearTimeout(timeoutId);</code></pre>
+        </div>
+
+        <div class="test-section"
+            style="text-align: center; background: linear-gradient(135deg, #667eea22 0%, #764ba244 100%);">
+            <h2 style="color: #667eea; margin-bottom: 20px;">🚀 立即体验</h2>
+            <a href="/p/每日资讯/" class="btn">查看公告页面</a>
+            <a href="/docs/动态内容加载说明.md" class="btn"
+                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">阅读文档</a>
+        </div>
+
+        <div class="footer">
+            <p>✨ 所有改进已部署到您的博客</p>
+            <p style="margin-top: 10px; opacity: 0.8;">更新时间: 2026-02-07 21:35</p>
+        </div>
+    </div>
+
+    <script src="/js/dynamic-content-loader.js"></script>
+    <script>
+        // 测试GitHub内容加载
+        if (typeof loadRemoteMarkdown === 'function') {
+            loadRemoteMarkdown(
+                'test-github-content',
+                'https://raw.githubusercontent.com/Vu1nT0tal/yarb/main/today.md'
+            );
+        }
+
+        // 测试RSS加载
+        if (typeof loadRssFeed === 'function') {
+            loadRssFeed(
+                'test-rss-content',
+                'https://www.ruanyifeng.com/blog/atom.xml',
+                5
+            );
+        }
+    </script>
+</body>
+
+</html>

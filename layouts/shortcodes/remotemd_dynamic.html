@@ -1,0 +1,33 @@
+{{/* 确保加载 JS 库 */}}
+{{ $js := resources.Get "js/dynamic-content-loader.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+
+{{ $url := .Get 0 }}
+
+{{ $id := printf "dyn-md-%x" (now.Unix) }}
+
+{{/* 1. 构建时先获取一次作为备份内容 */}}
+{{ $fallback := "" }}
+{{ $remote := resources.GetRemote $url }}
+{{ if $remote }}
+{{ $fallback = $remote.Content | markdownify }}
+{{ else }}
+{{ $fallback = "正在从云端拉取实时内容..." }}
+{{ end }}
+
+<div id="{{ $id }}" class="dynamic-container">
+    <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
+        加载中...
+    </div>
+    <div class="dynamic-content-body">
+        {{ $fallback }}
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        if (typeof silentUpdate === 'function') {
+            silentUpdate('{{ $id }}', '{{ $url }}', 'md');
+        }
+    });
+</script>

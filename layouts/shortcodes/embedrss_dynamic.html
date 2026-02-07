@@ -1,0 +1,58 @@
+{{/* 确保加载 JS 库 */}}
+{{ $js := resources.Get "js/dynamic-content-loader.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+
+{{ $url := .Get 0 }}
+{{ $count := .Get 1 | default 5 }}
+{{ $id := printf "dyn-rss-%x" (now.Unix) }}
+
+{{/* 构建时抓取内容作为“保底”显示 */}}
+{{ $fallback_html := "" }}
+{{ $resp := resources.GetRemote $url }}
+
+{{ if $resp }}
+{{ $feed := $resp | transform.Unmarshal }}
+{{ $items := slice }}
+
+{{/* 兼容性处理：RSS 2.0 vs Atom */}}
+{{ if $feed.channel.item }}
+{{ $items = $feed.channel.item }}
+{{ else if $feed.entry }}
+{{ $items = $feed.entry }}
+{{ end }}
+
+{{ if gt (len $items) 0 }}
+{{ $fallback_html = "<ul>" }}
+    {{ range first $count $items }}
+    {{ $title := .title }}
+    {{ $link := .link }}
+    {{/* Atom 的 link 结构可能不同 */}}
+    {{ if reflect.IsMap .link }}
+    {{ $link = .link.href }}
+    {{ end }}
+    {{ $fallback_html = printf "%s<li><a href='%s' target='_blank'>%s</a></li>" $fallback_html $link $title }}
+    {{ end }}
+    {{ $fallback_html = printf "%s</ul>" $fallback_html }}
+{{ else }}
+{{ $fallback_html = "<p style='color:#999;'>正在尝试建立实时连线...</p>" }}
+{{ end }}
+{{ else }}
+{{ $fallback_html = "<p style='color:#999;'>正在从云端拉取快照...</p>" }}
+{{ end }}
+
+<div id="{{ $id }}" class="dynamic-container">
+    <div class="load-status" style="font-size: 0.7em; color: #aaa; text-align: right; margin-bottom: 5px;">
+        📡 正在同步云端资讯...
+    </div>
+    <div class="dynamic-content-body">
+        {{ $fallback_html | safeHTML }}
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', function () {
+        if (typeof silentUpdate === 'function') {
+            silentUpdate('{{ $id }}', '{{ $url }}', 'rss', {{ $count }});
+        }
+    });
+</script>
