@@ -9,11 +9,15 @@
 
 {{/* 构建时预览 */}}
 {{ $fallback_html := "" }}
-{{ $resp := resources.GetRemote $url }}
-
 {{ $display_items := slice }}
-{{ if $resp }}
-{{ $feed := $resp | transform.Unmarshal }}
+
+{{ with try (resources.GetRemote $url) }}
+{{ with .Err }}
+{{/* 抓取失败 */}}
+{{ else with .Value }}
+{{ if or (in .MediaType.Type "xml") (in .MediaType.Type "rss") (in .MediaType.Type "atom") (in .MediaType.Type "json")
+}}
+{{ $feed := . | transform.Unmarshal }}
 {{ $all_items := slice }}
 {{ if $feed.channel.item }} {{ $all_items = $feed.channel.item }}
 {{ else if $feed.entry }} {{ $all_items = $feed.entry }} {{ end }}
@@ -26,6 +30,8 @@
 
 {{ if eq (len $display_items) 0 }}
 {{ $display_items = first 3 $all_items }}
+{{ end }}
+{{ end }}
 {{ end }}
 {{ end }}
 

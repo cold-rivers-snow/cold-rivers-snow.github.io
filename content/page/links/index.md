@@ -39,6 +39,9 @@ links:
   - title: 极客时间文档
     description: 极客时间文档.
     website: https://uaxe.github.io/geektime-docs/
+  - title: 左耳耗子
+    description: 左耳耗子
+    website: https://coolshell.cn
 menu:
     main: 
         weight: -50

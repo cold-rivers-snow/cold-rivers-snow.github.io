@@ -9,13 +9,19 @@
 {{ $id := printf "dyn-rss-%x" (now.UnixNano) }}
 
 {{/* 构建时抓取内容作为“保底”显示 */}}
-{{ $resp := resources.GetRemote $url }}
 {{ $fallback_items := slice }}
 
-{{ if $resp }}
-{{ $feed := $resp | transform.Unmarshal }}
+{{ with try (resources.GetRemote $url) }}
+{{ with .Err }}
+{{/* 抓取失败 */}}
+{{ else with .Value }}
+{{ if or (in .MediaType.Type "xml") (in .MediaType.Type "rss") (in .MediaType.Type "atom") (in .MediaType.Type "json")
+}}
+{{ $feed := . | transform.Unmarshal }}
 {{ if $feed.channel.item }} {{ $fallback_items = first $count $feed.channel.item }}
 {{ else if $feed.entry }} {{ $fallback_items = first $count $feed.entry }} {{ end }}
+{{ end }}
+{{ end }}
 {{ end }}
 
 <div id="{{ $id }}" class="dynamic-container">

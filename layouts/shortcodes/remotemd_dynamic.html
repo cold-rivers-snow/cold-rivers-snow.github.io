@@ -9,12 +9,13 @@
 {{ $id := printf "dyn-md-%x" (now.UnixNano) }}
 
 {{/* 1. 构建时先获取一次作为备份内容 */}}
-{{ $fallback := "" }}
-{{ $remote := resources.GetRemote $url }}
-{{ if $remote }}
-{{ $fallback = $remote.Content | markdownify }}
-{{ else }}
-{{ $fallback = "正在从云端拉取实时内容..." }}
+{{ $fallback := "正在从云端拉取实时内容..." }}
+{{ with try (resources.GetRemote $url) }}
+{{ with .Err }}
+{{/* 抓取失败 */}}
+{{ else with .Value }}
+{{ $fallback = .Content | markdownify }}
+{{ end }}
 {{ end }}
 
 <div id="{{ $id }}" class="dynamic-container">
