@@ -7,8 +7,8 @@ on:
       - main
   # 定时触发：每天北京时间早上8点（UTC时间0点）自动构建
   # 这样可以确保每日资讯等内容保持最新
-  schedule:
-    - cron: '0 0 * * *'  # 每天UTC 0:00 (北京时间8:00)
+  # schedule:
+  #   - cron: '0 0 * * *'  # 每天UTC 0:00 (北京时间8:00)
   # 允许手动触发
   workflow_dispatch:
 
