@@ -1,0 +1,40 @@
+name: deploy
+
+# 代码提交到main分支时触发github action
+on:
+  push:
+    branches:
+      - main
+  # 定时触发：每天北京时间早上8点（UTC时间0点）自动构建
+  # 这样可以确保每日资讯等内容保持最新
+  # schedule:
+  #   - cron: '0 0 * * *'  # 每天UTC 0:00 (北京时间8:00)
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+              fetch-depth: 0
+
+        - name: Setup Hugo
+          uses: peaceiris/actions-hugo@v3
+          with:
+              hugo-version: "latest"
+              extended: true
+
+        - name: Build Web
+          run: hugo -D
+
+        - name: Deploy Web
+          uses: peaceiris/actions-gh-pages@v4
+          with:
+              PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+              EXTERNAL_REPOSITORY: cold-rivers-snow/cold-rivers-snow.github.io
+              PUBLISH_BRANCH: main
+              PUBLISH_DIR: ./public
+              commit_message: auto deploy
